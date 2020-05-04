@@ -1,0 +1,4 @@
+<f:layout name="Default" />
+<f:section name="Title">{headline}</f:section>
+<f:section name="Main">
+{content}</f:section>

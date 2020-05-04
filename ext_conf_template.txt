@@ -1,0 +1,8 @@
+# cat=basic//010; type=int+; label=Storage pid for mailings and the mail queue
+storagePid = 0
+
+# cat=basic//020; type=int+; label=Number of emails to be sent per execution of the process mail queue command
+emailProcessCount = 50
+
+# cat=basic//030; type=options[infinite=250,1 level=1,2 levels=2,3 levels=3,4 levels=4,5 levels=5]; label=Defines the recursion level for the given backend user groups in a mailing
+backendGroupRecursionLevel = 250

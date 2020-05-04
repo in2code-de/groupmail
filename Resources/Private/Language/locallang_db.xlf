@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-04-29T14:43:34Z"
+          product-name="in2bemail">
+        <header/>
+        <body>
+            <trans-unit id="tx_in2bemail_domain_model_mailing">
+                <source>Mailing</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.be_groups">
+                <source>Backend Usergroups</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.subject">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.bodytext">
+                <source>Bodytext</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.mail_format">
+                <source>Mail Format</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.mail_format.both">
+                <source>HTML and Plain</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.mail_format.html">
+                <source>HTML</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.showinviews.plain">
+                <source>Plain</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.sender">
+                <source>Sender</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.sender_mail">
+                <source>E-Mail</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.sender_name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.mail_queue_generated">
+                <source>Mail Queue generated</source>
+            </trans-unit>
+
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue">
+                <source>Queue Entry</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.mailing">
+                <source>Mailing</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.be_user">
+                <source>Backend User</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.sent">
+                <source>Sent</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

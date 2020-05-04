@@ -1,0 +1,25 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  In2code\In2bemail\:
+    resource: '../Classes/*'
+
+  In2code\In2bemail\Service\MailService:
+    public: true
+
+  In2code\In2bemail\Command\GenerateMailQueueCommand:
+    public: true
+    tags:
+      - name: 'console.command'
+        command: 'in2bemail:generateMailQueue'
+        schedulable: true
+
+  In2code\In2bemail\Command\ProcessMailQueueCommand:
+    public: true
+    tags:
+      - name: 'console.command'
+        command: 'in2bemail:processMailQueue'
+        schedulable: true
