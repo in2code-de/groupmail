@@ -62,7 +62,7 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
             $this->logger->info(
                 'The mail queue for mailing: ' . $mailing->getUid() . ' was created.',
                 [
-                    'mailing' => $mailing
+                    'mailing' => $mailing->getUid()
                 ]
             );
             $mailing->setMailQueueGenerated(true);
