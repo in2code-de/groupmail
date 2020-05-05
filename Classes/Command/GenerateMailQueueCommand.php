@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Command;
 
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Domain\Repository\MailingRepository;
 use In2code\In2bemail\Service\QueueService;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -19,18 +17,12 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
     use LoggerAwareTrait;
 
     /**
-     * @var MailingRepository
-     */
-    protected $mailingRepository;
-
-    /**
      * @var QueueService
      */
     protected $queueService;
 
-    public function __construct(MailingRepository $mailingRepository, QueueService $queueService)
+    public function __construct(QueueService $queueService)
     {
-        $this->mailingRepository = $mailingRepository;
         $this->queueService = $queueService;
         parent::__construct();
     }
@@ -53,20 +45,6 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $mailings = $this->mailingRepository->findByMailQueueGenerated(0);
-
-        /** @var Mailing $mailing */
-        foreach ($mailings as $mailing) {
-            $this->queueService->generateQueueForMailing($mailing);
-
-            $this->logger->info(
-                'The mail queue for mailing: ' . $mailing->getUid() . ' was created.',
-                [
-                    'mailing' => $mailing->getUid()
-                ]
-            );
-            $mailing->setMailQueueGenerated(true);
-            $this->mailingRepository->update($mailing);
-        }
+        $this->queueService->generateQueue();
     }
 }
