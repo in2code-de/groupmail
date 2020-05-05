@@ -26,6 +26,11 @@ class MailQueue extends AbstractEntity
     protected $sent = false;
 
     /**
+     * @var bool
+     */
+    protected $hidden = false;
+
+    /**
      * @return Mailing|null
      */
     public function getMailing(): ?Mailing
@@ -76,6 +81,24 @@ class MailQueue extends AbstractEntity
     public function setSent(bool $sent): MailQueue
     {
         $this->sent = $sent;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * @param bool $hidden
+     * @return MailQueue
+     */
+    public function setHidden(bool $hidden): MailQueue
+    {
+        $this->hidden = $hidden;
         return $this;
     }
 }

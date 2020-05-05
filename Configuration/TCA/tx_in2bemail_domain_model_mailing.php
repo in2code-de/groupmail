@@ -119,6 +119,13 @@ return [
                 'type' => 'check',
                 'readOnly' => true
             ]
+        ],
+        'hidden' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
+            'config' => [
+                'type' => 'check',
+            ]
         ]
     ]
 ];

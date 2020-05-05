@@ -47,6 +47,11 @@ class Mailing extends AbstractEntity
      */
     protected $mailQueueGenerated = false;
 
+    /**
+     * @var bool
+     */
+    protected $hidden = false;
+
     public function __construct()
     {
         $this->beGroups = new ObjectStorage();
@@ -195,6 +200,24 @@ class Mailing extends AbstractEntity
     public function setMailQueueGenerated(bool $mailQueueGenerated): Mailing
     {
         $this->mailQueueGenerated = $mailQueueGenerated;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * @param bool $hidden
+     * @return Mailing
+     */
+    public function setHidden(bool $hidden): Mailing
+    {
+        $this->hidden = $hidden;
         return $this;
     }
 }
