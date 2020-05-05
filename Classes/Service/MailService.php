@@ -40,6 +40,8 @@ class MailService extends AbstractService
      * @param string $senderName
      * @param string $mailFormat valid options are FluidEmail::FORMAT_BOTH,  FluidEmail::FORMAT_HTML or FluidEmail::FORMAT_PLAIN
      * @param array $attachments
+     *
+     * @api
      */
     public function generateMailing(
         array $backendGroups,
@@ -70,6 +72,7 @@ class MailService extends AbstractService
                 'bodytext' => $bodytext,
                 'senderMail' => $senderEmail,
                 'senderName' => $senderName,
+                'mailFormat' => $mailFormat,
                 'pid' => ConfigurationUtility::getStoragePid()
             ],
             new Mailing()
