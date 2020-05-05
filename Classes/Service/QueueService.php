@@ -10,6 +10,8 @@ use In2code\In2bemail\Domain\Repository\MailQueueRepository;
 use In2code\In2bemail\Utility\BackendUserUtility;
 use In2code\In2bemail\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 
 class QueueService extends AbstractService
 {
@@ -33,6 +35,14 @@ class QueueService extends AbstractService
      */
     protected $mailingRepository;
 
+    /**
+     * QueueService constructor.
+     *
+     * @param BackendUserGroupService $backendUserGroupService
+     * @param MailQueueRepository $mailQueueRepository
+     * @param MailService $mailService
+     * @param MailingRepository $mailingRepository
+     */
     public function __construct(
         BackendUserGroupService $backendUserGroupService,
         MailQueueRepository $mailQueueRepository,
@@ -65,8 +75,8 @@ class QueueService extends AbstractService
     }
 
     /**
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws IllegalObjectTypeException
+     * @throws UnknownObjectException
      */
     public function generateQueue() {
         $mailings = $this->mailingRepository->findByMailQueueGenerated(0);
@@ -87,8 +97,8 @@ class QueueService extends AbstractService
     }
 
     /**
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws IllegalObjectTypeException
+     * @throws UnknownObjectException
      */
     public function processQueue()
     {

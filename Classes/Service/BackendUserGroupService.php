@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Service;
 
-use In2code\In2bemail\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup;

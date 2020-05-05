@@ -9,6 +9,8 @@ use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 
 class ProcessMailQueueCommand extends Command implements LoggerAwareInterface
 {
@@ -19,6 +21,11 @@ class ProcessMailQueueCommand extends Command implements LoggerAwareInterface
      */
     protected $queueService;
 
+    /**
+     * ProcessMailQueueCommand constructor.
+     *
+     * @param QueueService $queueService
+     */
     public function __construct(QueueService $queueService)
     {
         $this->queueService = $queueService;
@@ -38,8 +45,8 @@ class ProcessMailQueueCommand extends Command implements LoggerAwareInterface
      *
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws IllegalObjectTypeException
+     * @throws UnknownObjectException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

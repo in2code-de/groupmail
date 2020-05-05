@@ -21,6 +21,11 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
      */
     protected $queueService;
 
+    /**
+     * GenerateMailQueueCommand constructor.
+     *
+     * @param QueueService $queueService
+     */
     public function __construct(QueueService $queueService)
     {
         $this->queueService = $queueService;
