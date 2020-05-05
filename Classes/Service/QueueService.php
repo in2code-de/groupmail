@@ -91,7 +91,7 @@ class QueueService extends AbstractService
                     'mailing' => $mailing->getUid()
                 ]
             );
-            $mailing->setMailQueueGenerated(true)->setHidden(true);
+            $mailing->setMailQueueGenerated(true);
             $this->mailingRepository->update($mailing);
         }
     }
