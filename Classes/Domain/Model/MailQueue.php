@@ -35,6 +35,11 @@ class MailQueue extends AbstractEntity
     /**
      * @var bool
      */
+    protected $error = false;
+
+    /**
+     * @var bool
+     */
     protected $hidden = false;
 
     /**
@@ -129,6 +134,24 @@ class MailQueue extends AbstractEntity
     public function setContext(string $context): MailQueue
     {
         $this->context = $context;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isError(): bool
+    {
+        return $this->error;
+    }
+
+    /**
+     * @param bool $error
+     * @return MailQueue
+     */
+    public function setError(bool $error): MailQueue
+    {
+        $this->error = $error;
         return $this;
     }
 

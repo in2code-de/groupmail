@@ -15,7 +15,12 @@ class MailQueueRepository extends AbstractRepository
     {
         $query = $this->createQuery();
 
-        $query->matching($query->equals('sent', false));
+        $constraints = [
+            $query->equals('sent', false),
+            $query->equals('error', false)
+        ];
+
+        $query->matching($query->logicalAnd($constraints));
         $query->setLimit($limit);
         $query->setOrderings(['tstamp' => QueryInterface::ORDER_ASCENDING]);
 

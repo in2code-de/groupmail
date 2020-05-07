@@ -40,6 +40,7 @@ CREATE TABLE tx_in2bemail_domain_model_mailqueue
     fe_user          int(11)             DEFAULT '0'  NOT NULL,
     context          varchar(255)        DEFAULT 'fe' NOT NULL,
     sent             tinyint(4) unsigned DEFAULT '0'  NOT NULL,
+    error            tinyint(4) unsigned DEFAULT '0'  NOT NULL,
 
     tstamp           int(11) unsigned    DEFAULT '0'  NOT NULL,
     crdate           int(11) unsigned    DEFAULT '0'  NOT NULL,

@@ -31,11 +31,11 @@ return [
         'rootLevel' => -1
     ],
     'interface' => [
-        'showRecordFieldList' => 'mailing,be_user,fe_user,sent',
+        'showRecordFieldList' => 'mailing,be_user,fe_user,sent,error',
     ],
     'types' => [
-        'fe' => ['showitem' => 'context,mailing,fe_user,sent'],
-        'be' => ['showitem' => 'context,mailing,be_user,sent'],
+        'fe' => ['showitem' => 'context,mailing,fe_user,sent,error'],
+        'be' => ['showitem' => 'context,mailing,be_user,sent,error'],
     ],
     'columns' => [
         'context' => [
@@ -88,6 +88,14 @@ return [
                 ],
                 'foreign_table' => 'fe_users',
                 'default' => 0,
+            ]
+        ],
+        'error' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.error',
+            'config' => [
+                'type' => 'check',
+                'readOnly' => true
             ]
         ],
         'sent' => [

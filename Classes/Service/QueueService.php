@@ -129,8 +129,10 @@ class QueueService extends AbstractService
         foreach ($recordsToProcess as $recordToProcess) {
             if ($this->mailService->sendMail($recordToProcess)) {
                 $recordToProcess->setSent(true);
-                $this->mailQueueRepository->update($recordToProcess);
+            } else {
+                $recordToProcess->setError(true);
             }
+            $this->mailQueueRepository->update($recordToProcess);
         }
     }
 
