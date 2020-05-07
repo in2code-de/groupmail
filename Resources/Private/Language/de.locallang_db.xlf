@@ -12,6 +12,10 @@
                 <source>Backend Usergroups</source>
                 <target>Backend Usergruppen</target>
             </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.fe_groups">
+                <source>Frontend Usergroups</source>
+                <target>Frontend Usergruppen</target>
+            </trans-unit>
             <trans-unit id="tx_in2bemail_domain_model_mailing.subject">
                 <source>Subject</source>
                 <target>Betreff</target>
@@ -65,9 +69,30 @@
                 <source>Backend User</source>
                 <target>Backend User</target>
             </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.fe_user">
+                <source>Frontend User</source>
+                <target>Frontend User</target>
+            </trans-unit>
             <trans-unit id="tx_in2bemail_domain_model_mailqueue.sent">
                 <source>Sent</source>
                 <target>Gesendet</target>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.error">
+                <source>Error</source>
+                <target>Error</target>
+            </trans-unit>
+
+            <trans-unit id="context">
+                <source>Context</source>
+                <target>Context</target>
+            </trans-unit>
+            <trans-unit id="context.backend">
+                <source>Backend</source>
+                <target>Backend</target>
+            </trans-unit>
+            <trans-unit id="context.frontend">
+                <source>Frontend</source>
+                <target>Frontend</target>
             </trans-unit>
         </body>
     </file>

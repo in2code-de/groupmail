@@ -44,13 +44,13 @@ return [
     'columns' => [
         'context' => [
             'exclude' => 0,
-            'label' => 'Context',
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['Frontend', 'fe'],
-                    ['Backend', 'be'],
+                    ['LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.frontend', 'fe'],
+                    ['LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.backend', 'be'],
                 ]
             ]
         ],

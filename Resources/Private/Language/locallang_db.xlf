@@ -10,6 +10,9 @@
             <trans-unit id="tx_in2bemail_domain_model_mailing.be_groups">
                 <source>Backend Usergroups</source>
             </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.fe_groups">
+                <source>Frontend Usergroups</source>
+            </trans-unit>
             <trans-unit id="tx_in2bemail_domain_model_mailing.subject">
                 <source>Subject</source>
             </trans-unit>
@@ -50,8 +53,24 @@
             <trans-unit id="tx_in2bemail_domain_model_mailqueue.be_user">
                 <source>Backend User</source>
             </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.fe_user">
+                <source>Frontend User</source>
+            </trans-unit>
             <trans-unit id="tx_in2bemail_domain_model_mailqueue.sent">
                 <source>Sent</source>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailqueue.error">
+                <source>Error</source>
+            </trans-unit>
+
+            <trans-unit id="context">
+                <source>Context</source>
+            </trans-unit>
+            <trans-unit id="context.backend">
+                <source>Backend</source>
+            </trans-unit>
+            <trans-unit id="context.frontend">
+                <source>Frontend</source>
             </trans-unit>
         </body>
     </file>
