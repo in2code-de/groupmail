@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Domain\Model;
 
+use In2code\In2bemail\Context\Context;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -16,6 +18,11 @@ class Mailing extends AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup>
      */
     protected $beGroups = [];
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup>
+     */
+    protected $feGroups = [];
 
     /**
      * @var string
@@ -48,6 +55,11 @@ class Mailing extends AbstractEntity
     protected $mailQueueGenerated = false;
 
     /**
+     * @var string
+     */
+    protected $context = Context::FRONTEND;
+
+    /**
      * @var bool
      */
     protected $hidden = false;
@@ -55,6 +67,7 @@ class Mailing extends AbstractEntity
     public function __construct()
     {
         $this->beGroups = new ObjectStorage();
+        $this->feGroups = new ObjectStorage();
     }
 
     /**
@@ -92,6 +105,44 @@ class Mailing extends AbstractEntity
     public function removeBeGroup(BackendUserGroup $backendUserGroup)
     {
         $this->beGroups->detach($backendUserGroup);
+        return $this;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getFeGroups(): ObjectStorage
+    {
+        return $this->feGroups;
+    }
+
+    /**
+     * @param ObjectStorage $feGroups
+     * @return Mailing
+     */
+    public function setFeGroups(ObjectStorage $feGroups): Mailing
+    {
+        $this->feGroups = $feGroups;
+        return $this;
+    }
+
+    /**
+     * @param FrontendUserGroup $frontendUserGroup
+     * @return $this
+     */
+    public function addFeGroup(FrontendUserGroup $frontendUserGroup)
+    {
+        $this->feGroups->attach($frontendUserGroup);
+        return $this;
+    }
+
+    /**
+     * @param FrontendUserGroup $frontendUserGroup
+     * @return $this
+     */
+    public function removeFeGroup(FrontendUserGroup $frontendUserGroup)
+    {
+        $this->feGroups->detach($frontendUserGroup);
         return $this;
     }
 
@@ -200,6 +251,24 @@ class Mailing extends AbstractEntity
     public function setMailQueueGenerated(bool $mailQueueGenerated): Mailing
     {
         $this->mailQueueGenerated = $mailQueueGenerated;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContext(): string
+    {
+        return $this->context;
+    }
+
+    /**
+     * @param string $context
+     * @return Mailing
+     */
+    public function setContext(string $context): Mailing
+    {
+        $this->context = $context;
         return $this;
     }
 

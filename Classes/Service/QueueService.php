@@ -3,22 +3,21 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Service;
 
+use In2code\In2bemail\Context\Context;
 use In2code\In2bemail\Domain\Model\Mailing;
 use In2code\In2bemail\Domain\Model\MailQueue;
 use In2code\In2bemail\Domain\Repository\MailingRepository;
 use In2code\In2bemail\Domain\Repository\MailQueueRepository;
-use In2code\In2bemail\Utility\BackendUserUtility;
 use In2code\In2bemail\Utility\ConfigurationUtility;
-use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 
 class QueueService extends AbstractService
 {
     /**
-     * @var BackendUserGroupService
+     * @var UserGroupService
      */
-    protected $backendUserGroupService;
+    protected $userGroupService;
 
     /**
      * @var MailService
@@ -36,23 +35,31 @@ class QueueService extends AbstractService
     protected $mailingRepository;
 
     /**
+     * @var UserService
+     */
+    protected $userService;
+
+    /**
      * QueueService constructor.
      *
-     * @param BackendUserGroupService $backendUserGroupService
+     * @param UserGroupService $backendUserGroupService
      * @param MailQueueRepository $mailQueueRepository
      * @param MailService $mailService
      * @param MailingRepository $mailingRepository
+     * @param UserService $userService
      */
     public function __construct(
-        BackendUserGroupService $backendUserGroupService,
+        UserGroupService $backendUserGroupService,
         MailQueueRepository $mailQueueRepository,
         MailService $mailService,
-        MailingRepository $mailingRepository
+        MailingRepository $mailingRepository,
+        UserService $userService
     ) {
-        $this->backendUserGroupService = $backendUserGroupService;
+        $this->userGroupService = $backendUserGroupService;
         $this->mailQueueRepository = $mailQueueRepository;
         $this->mailService = $mailService;
         $this->mailingRepository = $mailingRepository;
+        $this->userService = $userService;
     }
 
     /**
@@ -60,25 +67,38 @@ class QueueService extends AbstractService
      */
     protected function generateQueueForMailing(Mailing $mailing)
     {
-        $backendUsers = $this->getBackendUsersForMailing($mailing);
+        $groups = [];
+        switch ($mailing->getContext()) {
+            case Context::FRONTEND:
+                $groups = $mailing->getFeGroups()->toArray();
+                break;
+            case Context::BACKEND:
+                $groups = $mailing->getBeGroups()->toArray();
+                break;
+        }
 
-        foreach ($backendUsers as $backendUser) {
+        $users = $this->getUsersForMailing($groups, $mailing->getContext());
+
+        foreach ($users as $user) {
             $this->mailQueueRepository->createRecord(
                 [
                     'pid' => ConfigurationUtility::getStoragePid(),
-                    'beUser' => $backendUser['uid'],
+                    $mailing->getContext() . 'User' => $user['uid'],
+                    'context' => $mailing->getContext(),
                     'mailing' => $mailing
                 ],
                 new MailQueue()
             );
         }
+
     }
 
     /**
      * @throws IllegalObjectTypeException
      * @throws UnknownObjectException
      */
-    public function generateQueue() {
+    public function generateQueue()
+    {
         $mailings = $this->mailingRepository->findByMailQueueGenerated(0);
 
         /** @var Mailing $mailing */
@@ -115,34 +135,28 @@ class QueueService extends AbstractService
     }
 
     /**
-     * @param Mailing $mailing
+     * @param array $groups
+     * @param string $context
      * @return array
      */
-    protected function getBackendUsersForMailing(Mailing $mailing): array
+    protected function getUsersForMailing(array $groups, string $context): array
     {
-        $groups = [];
-        $backendUsers = [];
-
-        foreach ($mailing->getBeGroups() as $beGroup) {
-            $groups =
+        $groupsWithSubgroups = [];
+        foreach ($groups as $group) {
+            $groupsWithSubgroups[] = $group->getUid();
+            $groupsWithSubgroups =
                 array_unique(
                     array_merge(
-                        $groups,
-                        $this->backendUserGroupService->getBackendGroups(
-                            $beGroup,
-                            ConfigurationUtility::getRecursionLevel()
+                        $groupsWithSubgroups,
+                        $this->userGroupService->getSubgroups(
+                            $group->getUid(),
+                            ConfigurationUtility::getRecursionLevel(),
+                            $context
                         )
                     )
                 );
         }
 
-        foreach ($groups as $group) {
-            $backendUser = BackendUserUtility::getAllBackendUserForUserGroup($group);
-            if (!empty($backendUser)) {
-                ArrayUtility::mergeRecursiveWithOverrule($backendUsers, $backendUser);
-            }
-        }
-
-        return $backendUsers;
+        return $this->userService->getUserByGroups($groupsWithSubgroups, $context);
     }
 }

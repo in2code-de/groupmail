@@ -4,6 +4,8 @@ CREATE TABLE tx_in2bemail_domain_model_mailing
     pid                  int(11)             DEFAULT '0'    NOT NULL,
 
     be_groups            int(11)             DEFAULT '0'    NOT NULL,
+    fe_groups            int(11)             DEFAULT '0'    NOT NULL,
+    context              varchar(255)        DEFAULT 'fe'   NOT NULL,
     subject              text                               NOT NULL,
     bodytext             mediumtext                         NOT NULL,
     mail_format          varchar(255)        DEFAULT 'both' NOT NULL,
@@ -30,23 +32,25 @@ CREATE TABLE tx_in2bemail_domain_model_mailing
 
 CREATE TABLE tx_in2bemail_domain_model_mailqueue
 (
-    uid              int(11)                         NOT NULL auto_increment,
-    pid              int(11)             DEFAULT '0' NOT NULL,
+    uid              int(11)                          NOT NULL auto_increment,
+    pid              int(11)             DEFAULT '0'  NOT NULL,
 
-    mailing          int(11)             DEFAULT '0' NOT NULL,
-    be_user          int(11)             DEFAULT '0' NOT NULL,
-    sent             tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    mailing          int(11)             DEFAULT '0'  NOT NULL,
+    be_user          int(11)             DEFAULT '0'  NOT NULL,
+    fe_user          int(11)             DEFAULT '0'  NOT NULL,
+    context          varchar(255)        DEFAULT 'fe' NOT NULL,
+    sent             tinyint(4) unsigned DEFAULT '0'  NOT NULL,
 
-    tstamp           int(11) unsigned    DEFAULT '0' NOT NULL,
-    crdate           int(11) unsigned    DEFAULT '0' NOT NULL,
-    cruser_id        int(11) unsigned    DEFAULT '0' NOT NULL,
-    deleted          tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    hidden           tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime        int(11) unsigned    DEFAULT '0' NOT NULL,
-    endtime          int(11) unsigned    DEFAULT '0' NOT NULL,
+    tstamp           int(11) unsigned    DEFAULT '0'  NOT NULL,
+    crdate           int(11) unsigned    DEFAULT '0'  NOT NULL,
+    cruser_id        int(11) unsigned    DEFAULT '0'  NOT NULL,
+    deleted          tinyint(4) unsigned DEFAULT '0'  NOT NULL,
+    hidden           tinyint(4) unsigned DEFAULT '0'  NOT NULL,
+    starttime        int(11) unsigned    DEFAULT '0'  NOT NULL,
+    endtime          int(11) unsigned    DEFAULT '0'  NOT NULL,
 
-    sys_language_uid int(11)             DEFAULT '0' NOT NULL,
-    l10n_parent      int(11)             DEFAULT '0' NOT NULL,
+    sys_language_uid int(11)             DEFAULT '0'  NOT NULL,
+    l10n_parent      int(11)             DEFAULT '0'  NOT NULL,
     l10n_diffsource  mediumblob,
 
     PRIMARY KEY (uid),
@@ -76,3 +80,15 @@ CREATE TABLE tx_in2bemail_mailing_be_groups_mm
     KEY uid_local (uid_local),
     KEY uid_foreign (uid_foreign)
 );
+
+CREATE TABLE tx_in2bemail_mailing_fe_groups_mm
+(
+    uid_local       int(11) unsigned DEFAULT '0' NOT NULL,
+    uid_foreign     int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting         int(11) unsigned DEFAULT '0' NOT NULL,
+    sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+    KEY uid_local (uid_local),
+    KEY uid_foreign (uid_foreign)
+);
+

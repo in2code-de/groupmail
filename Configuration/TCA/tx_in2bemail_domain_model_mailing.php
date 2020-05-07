@@ -15,19 +15,25 @@ return [
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'default_sortby' => 'ORDER BY tstamp ASC',
         'delete' => 'deleted',
+        'type' => 'context',
+        'typeicon_classes' => [
+            'fe' => 'tx-in2bemail-frontend-mail',
+            'be' => 'tx-in2bemail-backend-mail',
+        ],
+        'typeicon_column' => 'context',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'iconfile' => 'EXT:in2bemail/Resources/Public/Icons/' . Mailing::TABLE . '.svg',
         'rootLevel' => -1
     ],
     'interface' => [
-        'showRecordFieldList' => 'be_groups,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated',
+        'showRecordFieldList' => 'be_groups,fe_groups,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated',
     ],
     'types' => [
-        '1' => ['showitem' => 'be_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated'],
+        'fe' => ['showitem' => 'context,fe_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated'],
+        'be' => ['showitem' => 'context,be_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated'],
     ],
     'palettes' => [
         'sender' => [
@@ -36,6 +42,18 @@ return [
         ],
     ],
     'columns' => [
+        'context' => [
+            'exclude' => 0,
+            'label' => 'Context',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Frontend', 'fe'],
+                    ['Backend', 'be'],
+                ]
+            ]
+        ],
         'be_groups' => [
             'exclude' => true,
             'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.be_groups',
@@ -44,6 +62,19 @@ return [
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'be_groups',
                 'MM' => 'tx_in2bemail_mailing_be_groups_mm',
+                'foreign_table_where' => 'ORDER BY title ASC',
+                'size' => 5,
+                'minitems' => 1,
+            ]
+        ],
+        'fe_groups' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.fe_groups',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'fe_groups',
+                'MM' => 'tx_in2bemail_mailing_fe_groups_mm',
                 'foreign_table_where' => 'ORDER BY title ASC',
                 'size' => 5,
                 'minitems' => 1,

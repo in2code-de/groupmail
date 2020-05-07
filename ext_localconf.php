@@ -1,5 +1,9 @@
 <?php
 
+use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 defined('TYPO3_MODE') or die();
 
 call_user_func(
@@ -21,5 +25,27 @@ call_user_func(
             'EXT:in2bemail/Resources/Private/Templates/Email';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][300] =
             'EXT:in2bemail/Resources/Private/Layouts/Email';
+
+        $icons = [
+            [
+                'identifier' => 'tx-in2bemail-backend-mail',
+                'source' => 'EXT:in2bemail/Resources/Public/Icons/mail_backend.svg'
+            ],
+            [
+                'identifier' => 'tx-in2bemail-frontend-mail',
+                'source' => 'EXT:in2bemail/Resources/Public/Icons/mail_frontend.svg'
+            ],
+        ];
+
+        $iconRegistry = GeneralUtility::makeInstance(
+            IconRegistry::class
+        );
+        foreach ($icons as $icon) {
+            $iconRegistry->registerIcon(
+                $icon['identifier'],
+                SvgIconProvider::class,
+                ['source' => $icon['source']]
+            );
+        }
     }
 );

@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Domain\Model;
 
+use In2code\In2bemail\Context\Context;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUser;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class MailQueue extends AbstractEntity
@@ -21,6 +23,11 @@ class MailQueue extends AbstractEntity
     protected $beUser = null;
 
     /**
+     * @var FrontendUser|null
+     */
+    protected $feUser = null;
+
+    /**
      * @var bool
      */
     protected $sent = false;
@@ -29,6 +36,11 @@ class MailQueue extends AbstractEntity
      * @var bool
      */
     protected $hidden = false;
+
+    /**
+     * @var string
+     */
+    protected $context = Context::FRONTEND;
 
     /**
      * @return Mailing|null
@@ -67,6 +79,24 @@ class MailQueue extends AbstractEntity
     }
 
     /**
+     * @return FrontendUser|null
+     */
+    public function getFeUser(): ?FrontendUser
+    {
+        return $this->feUser;
+    }
+
+    /**
+     * @param FrontendUser|null $feUser
+     * @return MailQueue
+     */
+    public function setFeUser(?FrontendUser $feUser): MailQueue
+    {
+        $this->feUser = $feUser;
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isSent(): bool
@@ -81,6 +111,24 @@ class MailQueue extends AbstractEntity
     public function setSent(bool $sent): MailQueue
     {
         $this->sent = $sent;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContext(): string
+    {
+        return $this->context;
+    }
+
+    /**
+     * @param string $context
+     * @return MailQueue
+     */
+    public function setContext(string $context): MailQueue
+    {
+        $this->context = $context;
         return $this;
     }
 

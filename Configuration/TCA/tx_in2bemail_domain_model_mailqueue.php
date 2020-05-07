@@ -7,7 +7,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE,
         'label' => 'mailing',
-        'label_alt' => 'be_user',
+        'label_alt' => 'be_user, fe_user',
         'label_alt_force' => 1,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,21 +17,39 @@ return [
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'default_sortby' => 'ORDER BY tstamp ASC',
         'delete' => 'deleted',
+        'type' => 'context',
+        'typeicon_classes' => [
+            'fe' => 'tx-in2bemail-frontend-mail',
+            'be' => 'tx-in2bemail-backend-mail',
+        ],
+        'typeicon_column' => 'context',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'iconfile' => 'EXT:in2bemail/Resources/Public/Icons/' . MailQueue::TABLE . '.svg',
         'rootLevel' => -1
     ],
     'interface' => [
-        'showRecordFieldList' => 'mailing,be_user,sent',
+        'showRecordFieldList' => 'mailing,be_user,fe_user,sent',
     ],
     'types' => [
-        '1' => ['showitem' => 'mailing,be_user,sent'],
+        'fe' => ['showitem' => 'context,mailing,fe_user,sent'],
+        'be' => ['showitem' => 'context,mailing,be_user,sent'],
     ],
     'columns' => [
+        'context' => [
+            'exclude' => 0,
+            'label' => 'Context',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Frontend', 'fe'],
+                    ['Backend', 'be'],
+                ]
+            ]
+        ],
         'mailing' => [
             'exclude' => true,
             'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.mailing',
@@ -56,6 +74,19 @@ return [
                     ['', 0],
                 ],
                 'foreign_table' => 'be_users',
+                'default' => 0,
+            ]
+        ],
+        'fe_user' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.fe_user',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['', 0],
+                ],
+                'foreign_table' => 'fe_users',
                 'default' => 0,
             ]
         ],
