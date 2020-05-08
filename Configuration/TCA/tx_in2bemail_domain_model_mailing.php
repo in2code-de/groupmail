@@ -29,11 +29,11 @@ return [
         'rootLevel' => -1
     ],
     'interface' => [
-        'showRecordFieldList' => 'be_groups,fe_groups,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated',
+        'showRecordFieldList' => 'be_groups,fe_groups,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated,hidden',
     ],
     'types' => [
-        'fe' => ['showitem' => 'context,fe_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated'],
-        'be' => ['showitem' => 'context,be_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated'],
+        'fe' => ['showitem' => 'context,fe_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'be' => ['showitem' => 'context,be_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
     ],
     'palettes' => [
         'sender' => [
@@ -154,6 +154,13 @@ return [
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
+            'config' => [
+                'type' => 'check',
+            ]
+        ],
+        'deleted' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.delete',
             'config' => [
                 'type' => 'check',
             ]

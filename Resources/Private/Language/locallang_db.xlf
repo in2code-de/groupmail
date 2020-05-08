@@ -72,6 +72,19 @@
             <trans-unit id="context.frontend">
                 <source>Frontend</source>
             </trans-unit>
+
+            <trans-unit id="modal.delete-warning.title">
+                <source>Delete Record</source>
+            </trans-unit>
+            <trans-unit id="modal.delete-warning">
+                <source>Are you sure you want to delete this record?</source>
+            </trans-unit>
+            <trans-unit id="modal.delete-warning.yes">
+                <source>Yes, delete Record</source>
+            </trans-unit>
+            <trans-unit id="modal.delete-warning.cancel">
+                <source>Cancel</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

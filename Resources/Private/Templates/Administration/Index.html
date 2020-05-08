@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Backend/Default"/>
+
+<f:section name="headline">
+	<h1>Mailing Administration:</h1>
+</f:section>
+
+<f:section name="content">
+	<f:comment>
+		Active Mailings:
+	</f:comment>
+
+	<h2>Aktive Mailings:</h2>
+	<div class="panel panel-default">
+		<f:render partial="Backend/Table" arguments="{mailings:activeMailings,enableOptions:1}" />
+	</div>
+
+	<h2>Abgeschlossene Mailings:</h2>
+	<div class="panel panel-default">
+		<f:render partial="Backend/Table" arguments="{mailings:activeMailings}" />
+	</div>
+
+	<f:be.infobox title="Legende:" disableIcon="true">
+		<div class="in2bemail-workflow-legend-container">
+			<div class="in2bemail-workflow-legend">
+				<span class="in2bemail-circle in2bemail-green"></span>Approved: class="success"
+			</div>
+			<div class="in2bemail-workflow-legend">
+				<span class="in2bemail-circle in2bemail-blue"></span>Review: class="info"
+			</div>
+			<div class="in2bemail-workflow-legend">
+				<span class="in2bemail-circle in2bemail-yellow"></span>Draft: class="warning"
+			</div>
+			<div class="in2bemail-workflow-legend">
+				<span class="in2bemail-circle in2bemail-red"></span>Rejected: class="danger"
+			</div>
+		</div>
+	</f:be.infobox>
+</f:section>
+</html>

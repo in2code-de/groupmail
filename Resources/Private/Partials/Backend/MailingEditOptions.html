@@ -1,0 +1,46 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="btn-group">
+	<backend:link.editRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
+							 class="btn btn-default"
+							 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
+		<core:icon identifier="actions-play" size="small"/>
+	</backend:link.editRecord>
+</div>
+<div class="btn-group">
+	<backend:link.editRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
+							 class="btn btn-default" title="Edit Record"
+							 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
+		<core:icon identifier="actions-open" size="small"/>
+	</backend:link.editRecord>
+
+	<in2bemail:link.hideUnHideRecord uid="{mailing.uid}"
+									 table="tx_in2bemail_domain_model_mailing"
+									 class="btn btn-default"
+									 currentStatus="{mailing.hidden}">
+		<f:if condition="{mailing.hidden}">
+			<f:then>
+				<core:icon identifier="actions-edit-unhide"/>
+			</f:then>
+			<f:else>
+				<core:icon identifier="actions-edit-hide"/>
+			</f:else>
+		</f:if>
+	</in2bemail:link.hideUnHideRecord>
+
+	<in2bemail:link.deleteRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
+								 class="btn btn-default t3js-modal-trigger"
+								 data="{
+														   title: '{f:translate(key:\'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.delete-warning.title\')}',
+														   content: '{f:translate(key:\'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.delete-warning\')}',
+														   severity: 'error',
+														   button-close-text: '{f:translate(key:\'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.delete-warning.cancel\')}',
+														   button-ok-text: '{f:translate(key:\'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.delete-warning.yes\')}'
+														   }">
+		<core:icon identifier="actions-delete"/>
+	</in2bemail:link.deleteRecord>
+</div>
+</html>
