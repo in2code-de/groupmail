@@ -99,7 +99,7 @@ class QueueService extends AbstractService
      */
     public function generateQueue()
     {
-        $mailings = $this->mailingRepository->findByMailQueueGenerated(0);
+        $mailings = $this->mailingRepository->getAvailableMailingsToGenerate();
 
         /** @var Mailing $mailing */
         foreach ($mailings as $mailing) {

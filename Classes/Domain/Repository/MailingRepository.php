@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Domain\Repository;
 
+use In2code\In2bemail\Workflow\Workflow;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 class MailingRepository extends AbstractRepository
 {
     /**
@@ -16,6 +19,48 @@ class MailingRepository extends AbstractRepository
         if ($includeHidden) {
             $query->getQuerySettings()->setIgnoreEnableFields(true);
         }
+
+        return $query->execute();
+    }
+
+    public function getAvailableMailingsToGenerate() {
+        $query = $this->createQuery();
+
+        $constraints = [
+            $query->equals('mailQueueGenerated', false),
+            $query->equals('rejected', false),
+            $query->equals('workflowState', Workflow::STATE_APPROVED)
+        ];
+
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
+
+    public function findActiveMailings()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $constraints[] = $query->equals('mailQueueGenerated', false);
+        $constraints[] = $query->logicalNot($query->equals('rejected', true));
+
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
+
+    public function findLockedMailings()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $constraints = [
+            $query->equals('mailQueueGenerated', true),
+            $query->equals('rejected', true)
+        ];
+
+        $query->matching($query->logicalOr($constraints));
 
         return $query->execute();
     }

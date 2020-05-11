@@ -13,7 +13,7 @@ class Context
      * @param string $value
      * @return bool
      */
-    public static function validateContext(string $value): bool
+    public static function isContextValid(string $value): bool
     {
         if ($value !== self::FRONTEND && $value !== self::BACKEND) {
             return false;

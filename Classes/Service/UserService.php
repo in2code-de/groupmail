@@ -28,7 +28,7 @@ class UserService extends AbstractService
     public function getUserByGroups(array $groups, string $context = Context::FRONTEND): array
     {
         $users = [];
-        if (Context::validateContext($context)) {
+        if (Context::isContextValid($context)) {
             foreach ($groups as $group) {
                 $user = $this->getAllUserForUserGroup($group, $context);
                 if (!empty($user)) {

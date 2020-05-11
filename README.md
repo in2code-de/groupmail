@@ -63,3 +63,10 @@ This extension can be configured in the "Extension Configuration" (Backend Modul
 - Storage Pid [integer]: Sets the PID on which the records are stored
 - Emails to sent per execution [integer]: Defines how many mails should be sent on one execution of the process mail queue command
 - Recursion Level [integer]: Defines the recursion level for the given backend user groups in a mailing
+
+### Workflow
+
+- draft / no mail queue entries will be generated
+- review / no mail queue entries will be generated
+- rejected / no mail queue entries will be generated
+- approved / mail queue entries will be generated

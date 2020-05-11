@@ -4,11 +4,15 @@
 	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="btn-group">
-	<backend:link.editRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
-							 class="btn btn-default"
-							 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
+	<in2bemail:link.approveMailing uid="{mailing.uid}" class="btn btn-default" title="Approve Mailing"
+								 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
 		<core:icon identifier="actions-play" size="small"/>
-	</backend:link.editRecord>
+	</in2bemail:link.approveMailing>
+	<in2bemail:link.rejectMailing uid="{mailing.uid}" class="btn btn-default" title="Reject Mailing"
+							 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
+		<core:icon identifier="actions-ban" size="small"/>
+	</in2bemail:link.rejectMailing>
+
 </div>
 <div class="btn-group">
 	<backend:link.editRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"

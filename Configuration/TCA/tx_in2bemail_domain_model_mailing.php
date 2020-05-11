@@ -1,6 +1,7 @@
 <?php
 
 use In2code\In2bemail\Domain\Model\Mailing;
+use In2code\In2bemail\Workflow\Workflow;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 
 return [
@@ -29,11 +30,11 @@ return [
         'rootLevel' => -1
     ],
     'interface' => [
-        'showRecordFieldList' => 'be_groups,fe_groups,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated,hidden',
+        'showRecordFieldList' => 'be_groups,fe_groups,workflow_state,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated,hidden',
     ],
     'types' => [
-        'fe' => ['showitem' => 'context,fe_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
-        'be' => ['showitem' => 'context,be_groups,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'fe' => ['showitem' => 'context,fe_groups,workflow_state,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'be' => ['showitem' => 'context,be_groups,workflow_state,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
     ],
     'palettes' => [
         'sender' => [
@@ -79,6 +80,33 @@ return [
                 'size' => 5,
                 'minitems' => 1,
             ]
+        ],
+        'workflow_state' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_DRAFT,
+                        Workflow::STATE_DRAFT
+                    ],
+                    [
+                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_REVIEW,
+                        Workflow::STATE_REVIEW
+                    ],
+                    [
+                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_APPROVED,
+                        Workflow::STATE_APPROVED
+                    ],
+                    [
+                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_REJECTED,
+                        Workflow::STATE_REJECTED
+                    ],
+                ],
+                'default' => Workflow::STATE_DRAFT,
+            ],
         ],
         'subject' => [
             'exclude' => true,
@@ -151,6 +179,14 @@ return [
                 'readOnly' => true
             ]
         ],
+        'rejected' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.rejected',
+            'config' => [
+                'type' => 'check',
+                'readOnly' => true
+            ]
+        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
@@ -164,6 +200,22 @@ return [
             'config' => [
                 'type' => 'check',
             ]
-        ]
+        ],
+        'tstamp' => [
+            'label' => 'tstamp',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
+            ]
+        ],
+        'crdate' => [
+            'label' => 'crdate',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
+            ]
+        ],
     ]
 ];

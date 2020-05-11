@@ -37,7 +37,7 @@ class UserGroupService extends AbstractService
     ): array {
         $groups = [];
 
-        if (Context::validateContext($context)) {
+        if (Context::isContextValid($context)) {
             $recursiveLevelConfig = ['maxLevel' => $recursiveLevel, 'currentLevel' => 0];
             $table = $context . '_groups';
             $this->queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);

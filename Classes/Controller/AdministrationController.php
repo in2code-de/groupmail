@@ -28,11 +28,17 @@ class AdministrationController extends ActionController
 
     public function indexAction()
     {
-        $activeMailings = $this->mailingRepository->findAll(true);
+
+        /*
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->mailingRepository->findActiveMailings(), __CLASS__ . ' in der Zeile ' . __LINE__);
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->mailingRepository->findLockedMailings(), __CLASS__ . ' in der Zeile ' . __LINE__);
+        die();
+        */
 
         $this->view->assignMultiple(
             [
-                'activeMailings' => $activeMailings
+                'activeMailings' => $this->mailingRepository->findActiveMailings(),
+                'lockedMailings' => $this->mailingRepository->findLockedMailings()
             ]
         );
 

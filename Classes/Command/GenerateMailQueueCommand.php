@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace In2code\In2bemail\Command;
 
+use In2code\In2bemail\Service\MailService;
 use In2code\In2bemail\Service\QueueService;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -22,13 +23,20 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
     protected $queueService;
 
     /**
+     * @var MailService
+     */
+    protected $mailService;
+
+    /**
      * GenerateMailQueueCommand constructor.
      *
      * @param QueueService $queueService
+     * @param MailService $mailService
      */
-    public function __construct(QueueService $queueService)
+    public function __construct(QueueService $queueService, MailService $mailService)
     {
         $this->queueService = $queueService;
+        $this->mailService = $mailService;
         parent::__construct();
     }
 
@@ -50,6 +58,7 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->mailService->updateRejectedMailings();
         $this->queueService->generateQueue();
     }
 }

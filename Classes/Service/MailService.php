@@ -8,8 +8,11 @@ use In2code\In2bemail\Domain\Model\Mailing;
 use In2code\In2bemail\Domain\Model\MailQueue;
 use In2code\In2bemail\Domain\Repository\MailingRepository;
 use In2code\In2bemail\Utility\ConfigurationUtility;
+use In2code\In2bemail\Workflow\Workflow;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\Mailer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -25,6 +28,11 @@ class MailService extends AbstractService
     protected $mailingRepository;
 
     /**
+     * @var QueryBuilder
+     */
+    protected $queryBuilder;
+
+    /**
      * MailService constructor.
      *
      * @param MailingRepository $mailingRepository
@@ -32,6 +40,9 @@ class MailService extends AbstractService
     public function __construct(MailingRepository $mailingRepository)
     {
         $this->mailingRepository = $mailingRepository;
+        $this->queryBuilder =
+            GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(Mailing::TABLE);
+
     }
 
     /**
@@ -43,6 +54,8 @@ class MailService extends AbstractService
      * @param string $mailFormat valid options are FluidEmail::FORMAT_BOTH,  FluidEmail::FORMAT_HTML or
      *     FluidEmail::FORMAT_PLAIN
      * @param string $context valid options are Context::FRONTEND or Context::BACKEND
+     * @param int $workflowState valid options are Workflow::STATE_DRAFT, Workflow::STATE_REVIEW,
+     *     Workflow::STATE_APPROVED or Workflow::STATE_REJECTED
      * @param array $attachments
      *
      * @api
@@ -55,6 +68,7 @@ class MailService extends AbstractService
         string $senderName = '',
         string $mailFormat = FluidEmail::FORMAT_BOTH,
         string $context = Context::FRONTEND,
+        int $workflowState = Workflow::STATE_DRAFT,
         array $attachments = []
     ) {
         if (empty($senderName)) {
@@ -69,11 +83,12 @@ class MailService extends AbstractService
             $groups,
             $senderEmail,
             $mailFormat,
-            $context
+            $context,
+            $workflowState
         )) {
             throw new \InvalidArgumentException(
-                'The argument validation of generateMailing failed. More information are in the logs',
-                '1588836726'
+                'The argument validation of generateMailing failed. For more Information take a look in the logs',
+                1588836726
             );
         }
 
@@ -103,21 +118,24 @@ class MailService extends AbstractService
      * @param string $senderEmail
      * @param string $mailFormat
      * @param string $context
+     * @param int $workflowState
      * @return bool
      */
     protected function validateArguments(
         array $groups,
         string $senderEmail,
         string $mailFormat,
-        string $context
+        string $context,
+        int $workflowState
     ): bool {
         $valid = true;
 
-        if (Context::validateContext($context)) {
+        if (!Context::isContextValid($context)) {
             $this->logger->critical(
                 'No valid context provided. Allowed are only: ' . Context::FRONTEND . ' or ' . Context::BACKEND,
                 [
                     'additionalInfo' => ['class' => __CLASS__, 'method' => __METHOD__, 'line' => __LINE__],
+                    'providedContext' => $context
                 ]
             );
             $valid = false;
@@ -138,6 +156,16 @@ class MailService extends AbstractService
         if (empty($senderEmail)) {
             $this->logger->critical(
                 'No valid sender email',
+                [
+                    'additionalInfo' => ['class' => __CLASS__, 'method' => __METHOD__, 'line' => __LINE__],
+                ]
+            );
+            $valid = false;
+        }
+
+        if (!Workflow::isValidWorkflowState($workflowState)) {
+            $this->logger->critical(
+                'No valid workflow state',
                 [
                     'additionalInfo' => ['class' => __CLASS__, 'method' => __METHOD__, 'line' => __LINE__],
                 ]
@@ -258,4 +286,24 @@ class MailService extends AbstractService
 
         return $status;
     }
+
+    /**
+     * This function updates mailings with the workflow status "rejected".
+     * So this mailings will ignored for the queue generation
+     */
+    public function updateRejectedMailings()
+    {
+        $this->queryBuilder
+            ->update(Mailing::TABLE)
+            ->where(
+                $this->queryBuilder->expr()->eq('mail_queue_generated', $this->queryBuilder->createNamedParameter(0)),
+                $this->queryBuilder->expr()->eq(
+                    'workflow_state',
+                    $this->queryBuilder->createNamedParameter(Workflow::STATE_REJECTED)
+                )
+            )
+            ->set('rejected', 1)
+            ->execute();
+    }
+
 }

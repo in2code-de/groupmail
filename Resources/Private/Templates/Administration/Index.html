@@ -10,18 +10,14 @@
 </f:section>
 
 <f:section name="content">
-	<f:comment>
-		Active Mailings:
-	</f:comment>
-
 	<h2>Aktive Mailings:</h2>
 	<div class="panel panel-default">
-		<f:render partial="Backend/Table" arguments="{mailings:activeMailings,enableOptions:1}" />
+		<f:render partial="Backend/ActiveMailings" arguments="{mailings:activeMailings}" />
 	</div>
 
 	<h2>Abgeschlossene Mailings:</h2>
 	<div class="panel panel-default">
-		<f:render partial="Backend/Table" arguments="{mailings:activeMailings}" />
+		<f:render partial="Backend/LockedMailings" arguments="{mailings:lockedMailings}" />
 	</div>
 
 	<f:be.infobox title="Legende:" disableIcon="true">

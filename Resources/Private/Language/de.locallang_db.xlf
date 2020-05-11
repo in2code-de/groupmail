@@ -57,6 +57,27 @@
                 <target>Mail Warteschlange erstellt</target>
             </trans-unit>
 
+            <trans-unit id="tx_in2bemail_domain_model_mailing.workflow_state">
+                <source>Workflow State</source>
+                <target>Workflow Status</target>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.workflow_state.1">
+                <source>Draft</source>
+                <target>Entwurf</target>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.workflow_state.2">
+                <source>Review</source>
+                <target>Überprüfen</target>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.workflow_state.3">
+                <source>Approved</source>
+                <target>Freigegeben</target>
+            </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.workflow_state.4">
+                <source>Rejected</source>
+                <target>Abgewiesen</target>
+            </trans-unit>
+
             <trans-unit id="tx_in2bemail_domain_model_mailqueue">
                 <source>Queue Entry</source>
                 <target>Eintrag Warteschlange</target>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace In2code\In2bemail\Domain\Model;
 
 use In2code\In2bemail\Context\Context;
+use In2code\In2bemail\Workflow\Workflow;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
@@ -60,9 +61,29 @@ class Mailing extends AbstractEntity
     protected $context = Context::FRONTEND;
 
     /**
+     * @var int
+     */
+    protected $workflowState = Workflow::STATE_DRAFT;
+
+    /**
+     * @var bool
+     */
+    protected $rejected = false;
+
+    /**
      * @var bool
      */
     protected $hidden = false;
+
+    /**
+     * @var \DateTime
+     */
+    protected $tstamp;
+
+    /**
+     * @var \DateTime
+     */
+    protected $crdate;
 
     public function __construct()
     {
@@ -273,6 +294,42 @@ class Mailing extends AbstractEntity
     }
 
     /**
+     * @return int
+     */
+    public function getWorkflowState(): int
+    {
+        return $this->workflowState;
+    }
+
+    /**
+     * @param int $workflowState
+     * @return Mailing
+     */
+    public function setWorkflowState(int $workflowState): Mailing
+    {
+        $this->workflowState = $workflowState;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRejected(): bool
+    {
+        return $this->rejected;
+    }
+
+    /**
+     * @param bool $rejected
+     * @return Mailing
+     */
+    public function setRejected(bool $rejected): Mailing
+    {
+        $this->rejected = $rejected;
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function isHidden(): bool
@@ -289,4 +346,41 @@ class Mailing extends AbstractEntity
         $this->hidden = $hidden;
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTstamp(): \DateTime
+    {
+        return $this->tstamp;
+    }
+
+    /**
+     * @param \DateTime $tstamp
+     * @return Mailing
+     */
+    public function setTstamp(\DateTime $tstamp): Mailing
+    {
+        $this->tstamp = $tstamp;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCrdate(): \DateTime
+    {
+        return $this->crdate;
+    }
+
+    /**
+     * @param \DateTime $crdate
+     * @return Mailing
+     */
+    public function setCrdate(\DateTime $crdate): Mailing
+    {
+        $this->crdate = $crdate;
+        return $this;
+    }
+
 }
