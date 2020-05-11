@@ -132,6 +132,95 @@
                 <source>Cancel</source>
                 <target>Abbrechen</target>
             </trans-unit>
+
+            <trans-unit id="legend">
+                <source>Legend:</source>
+                <target>Legende:</target>
+            </trans-unit>
+            <trans-unit id="legend.approved">
+                <source>Approved: is processed on the next run of the queue generation</source>
+                <target>Freigegeben: wird beim nächsten erstellen der Mail Warteschlange abgearbeitet</target>
+            </trans-unit>
+            <trans-unit id="legend.review">
+                <source>Review: will be ignored from the queue generation</source>
+                <target>Überprüfung: wird beim nächsten erstellen der Mail Warteschlange ignoriert</target>
+            </trans-unit>
+            <trans-unit id="legend.draft">
+                <source>Draft: will be ignored from the queue generation</source>
+                <target>Entwurf: wird beim nächsten erstellen der Mail Warteschlange ignoriert</target>
+            </trans-unit>
+            <trans-unit id="legend.rejected">
+                <source>Rejected: will be closed on the next run of the queue generation</source>
+                <target>Abgelehnt: wird beim nächsten erstellen der Mail Warteschlange geschlossen</target>
+            </trans-unit>
+
+            <trans-unit id="mailing-administration">
+                <source>Mailing administration</source>
+                <target>Mailing Administration</target>
+            </trans-unit>
+            <trans-unit id="active-mailings">
+                <source>active Mailings</source>
+                <target>aktive Mailings</target>
+            </trans-unit>
+            <trans-unit id="closed-mailings">
+                <source>closed Mailings</source>
+                <target>geschlossene Mailings</target>
+            </trans-unit>
+
+            <trans-unit id="table.headline.creation-date">
+                <source>creation date</source>
+                <target>Erstellungsdatum</target>
+            </trans-unit>
+            <trans-unit id="table.headline.last-update">
+                <source>last update</source>
+                <target>letztes Update</target>
+            </trans-unit>
+            <trans-unit id="table.headline.subject">
+                <source>subject</source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="table.headline.context">
+                <source>context</source>
+                <target>Context</target>
+            </trans-unit>
+            <trans-unit id="table.headline.groups">
+                <source>groups</source>
+                <target>Gruppen</target>
+            </trans-unit>
+            <trans-unit id="table.headline.status">
+                <source>status</source>
+                <target>Status</target>
+            </trans-unit>
+
+            <trans-unit id="status.rejected">
+                <source>rejected</source>
+                <target>abgelehnt</target>
+            </trans-unit>
+            <trans-unit id="status.generated">
+                <source>queue generated</source>
+                <target>warteschlange erstellt</target>
+            </trans-unit>
+
+            <trans-unit id="quick-options.approve">
+                <source>approve mailing</source>
+                <target>Mailing freigeben</target>
+            </trans-unit>
+            <trans-unit id="quick-options.reject">
+                <source>reject mailing</source>
+                <target>Mailing ablehnen</target>
+            </trans-unit>
+            <trans-unit id="quick-options.edit">
+                <source>edit mailing</source>
+                <target>Mailing bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="quick-options.hide">
+                <source>hide / unhide mailing</source>
+                <target>Mailing aktivieren / deaktivieren</target>
+            </trans-unit>
+            <trans-unit id="quick-options.delete">
+                <source>delete mailing</source>
+                <target>Mailing löschen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

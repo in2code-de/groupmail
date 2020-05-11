@@ -105,6 +105,75 @@
             <trans-unit id="modal.delete-warning.cancel">
                 <source>Cancel</source>
             </trans-unit>
+
+
+            <trans-unit id="legend">
+                <source>Legend:</source>
+            </trans-unit>
+            <trans-unit id="legend.approved">
+                <source>Approved: is processed on the next run of the queue generation</source>
+            </trans-unit>
+            <trans-unit id="legend.review">
+                <source>Review: will be ignored from the queue generation</source>
+            </trans-unit>
+            <trans-unit id="legend.draft">
+                <source>Draft: will be ignored from the queue generation</source>
+            </trans-unit>
+            <trans-unit id="legend.rejected">
+                <source>Rejected: will be closed on the next run of the queue generation</source>
+            </trans-unit>
+
+            <trans-unit id="mailing-administration">
+                <source>Mailing administration</source>
+            </trans-unit>
+            <trans-unit id="active-mailings">
+                <source>active Mailings</source>
+            </trans-unit>
+            <trans-unit id="closed-mailings">
+                <source>closed Mailings</source>
+            </trans-unit>
+
+            <trans-unit id="table.headline.creation-date">
+                <source>creation date</source>
+            </trans-unit>
+            <trans-unit id="table.headline.last-update">
+                <source>last update</source>
+            </trans-unit>
+            <trans-unit id="table.headline.subject">
+                <source>subject</source>
+            </trans-unit>
+            <trans-unit id="table.headline.context">
+                <source>context</source>
+            </trans-unit>
+            <trans-unit id="table.headline.groups">
+                <source>groups</source>
+            </trans-unit>
+            <trans-unit id="table.headline.status">
+                <source>status</source>
+            </trans-unit>
+
+            <trans-unit id="status.rejected">
+                <source>rejected</source>
+            </trans-unit>
+            <trans-unit id="status.generated">
+                <source>queue generated</source>
+            </trans-unit>
+
+            <trans-unit id="quick-options.approve">
+                <source>approve mailing</source>
+            </trans-unit>
+            <trans-unit id="quick-options.reject">
+                <source>reject mailing</source>
+            </trans-unit>
+            <trans-unit id="quick-options.edit">
+                <source>edit mailing</source>
+            </trans-unit>
+            <trans-unit id="quick-options.hide">
+                <source>hide / unhide mailing</source>
+            </trans-unit>
+            <trans-unit id="quick-options.delete">
+                <source>delete mailing</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

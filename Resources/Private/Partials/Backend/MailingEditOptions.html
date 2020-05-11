@@ -4,19 +4,23 @@
 	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="btn-group">
-	<in2bemail:link.approveMailing uid="{mailing.uid}" class="btn btn-default" title="Approve Mailing"
-								 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
+
+	<in2bemail:link.approveMailing uid="{mailing.uid}" class="btn btn-default"
+								   title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:quick-options.approve')}"
+								   returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
 		<core:icon identifier="actions-play" size="small"/>
 	</in2bemail:link.approveMailing>
-	<in2bemail:link.rejectMailing uid="{mailing.uid}" class="btn btn-default" title="Reject Mailing"
-							 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
+	<in2bemail:link.rejectMailing uid="{mailing.uid}" class="btn btn-default"
+								  title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:quick-options.reject')}"
+								  returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
 		<core:icon identifier="actions-ban" size="small"/>
 	</in2bemail:link.rejectMailing>
 
 </div>
 <div class="btn-group">
 	<backend:link.editRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
-							 class="btn btn-default" title="Edit Record"
+							 class="btn btn-default"
+							 title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:quick-options.edit')}"
 							 returnUrl="{f:be.uri(route: 'web_In2bemailAdministration')}">
 		<core:icon identifier="actions-open" size="small"/>
 	</backend:link.editRecord>
@@ -24,6 +28,7 @@
 	<in2bemail:link.hideUnHideRecord uid="{mailing.uid}"
 									 table="tx_in2bemail_domain_model_mailing"
 									 class="btn btn-default"
+									 title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:quick-options.hide')}"
 									 currentStatus="{mailing.hidden}">
 		<f:if condition="{mailing.hidden}">
 			<f:then>
@@ -36,6 +41,7 @@
 	</in2bemail:link.hideUnHideRecord>
 
 	<in2bemail:link.deleteRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
+								 title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:quick-options.delete')}"
 								 class="btn btn-default t3js-modal-trigger"
 								 data="{
 														   title: '{f:translate(key:\'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.delete-warning.title\')}',
