@@ -134,24 +134,40 @@
             </trans-unit>
 
             <trans-unit id="legend">
-                <source>Legend:</source>
-                <target>Legende:</target>
+                <source>Legend</source>
+                <target>Legende</target>
             </trans-unit>
-            <trans-unit id="legend.approved">
-                <source>Approved: is processed on the next run of the queue generation</source>
-                <target>Freigegeben: wird beim nächsten erstellen der Mail Warteschlange abgearbeitet</target>
+            <trans-unit id="legend.approved.title">
+                <source>Approved</source>
+                <target>Freigegeben</target>
             </trans-unit>
-            <trans-unit id="legend.review">
-                <source>Review: will be ignored from the queue generation</source>
-                <target>Überprüfung: wird beim nächsten erstellen der Mail Warteschlange ignoriert</target>
+            <trans-unit id="legend.approved.desciption">
+                <source>is processed on the next run of the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange abgearbeitet</target>
             </trans-unit>
-            <trans-unit id="legend.draft">
-                <source>Draft: will be ignored from the queue generation</source>
-                <target>Entwurf: wird beim nächsten erstellen der Mail Warteschlange ignoriert</target>
+            <trans-unit id="legend.review.title">
+                <source>Review</source>
+                <target>Überprüfung</target>
             </trans-unit>
-            <trans-unit id="legend.rejected">
-                <source>Rejected: will be closed on the next run of the queue generation</source>
-                <target>Abgelehnt: wird beim nächsten erstellen der Mail Warteschlange geschlossen</target>
+            <trans-unit id="legend.review.description">
+                <source>will be ignored from the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange ignoriert</target>
+            </trans-unit>
+            <trans-unit id="legend.draft.title">
+                <source>Draft</source>
+                <target>Entwurf</target>
+            </trans-unit>
+            <trans-unit id="legend.draft.description">
+                <source>will be ignored from the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange ignoriert</target>
+            </trans-unit>
+            <trans-unit id="legend.rejected.title">
+                <source>Rejected</source>
+                <target>Abgelehnt</target>
+            </trans-unit>
+            <trans-unit id="legend.rejected.description">
+                <source>will be closed on the next run of the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange geschlossen</target>
             </trans-unit>
 
             <trans-unit id="mailing-administration">
@@ -159,12 +175,12 @@
                 <target>Mailing Administration</target>
             </trans-unit>
             <trans-unit id="active-mailings">
-                <source>active Mailings</source>
-                <target>aktive Mailings</target>
+                <source>Active Mailings</source>
+                <target>Aktive Mailings</target>
             </trans-unit>
             <trans-unit id="closed-mailings">
-                <source>closed Mailings</source>
-                <target>geschlossene Mailings</target>
+                <source>Closed Mailings</source>
+                <target>Geschlossene Mailings</target>
             </trans-unit>
 
             <trans-unit id="table.headline.creation-date">
@@ -173,7 +189,7 @@
             </trans-unit>
             <trans-unit id="table.headline.last-update">
                 <source>last update</source>
-                <target>letztes Update</target>
+                <target>Letztes Update</target>
             </trans-unit>
             <trans-unit id="table.headline.subject">
                 <source>subject</source>
@@ -198,7 +214,7 @@
             </trans-unit>
             <trans-unit id="status.generated">
                 <source>queue generated</source>
-                <target>warteschlange erstellt</target>
+                <target>Warteschlange erstellt</target>
             </trans-unit>
 
             <trans-unit id="quick-options.approve">

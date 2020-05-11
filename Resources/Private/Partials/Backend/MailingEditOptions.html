@@ -25,6 +25,7 @@
 		<core:icon identifier="actions-open" size="small"/>
 	</backend:link.editRecord>
 
+	<f:comment>
 	<in2bemail:link.hideUnHideRecord uid="{mailing.uid}"
 									 table="tx_in2bemail_domain_model_mailing"
 									 class="btn btn-default"
@@ -39,6 +40,7 @@
 			</f:else>
 		</f:if>
 	</in2bemail:link.hideUnHideRecord>
+	</f:comment>
 
 	<in2bemail:link.deleteRecord uid="{mailing.uid}" table="tx_in2bemail_domain_model_mailing"
 								 title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:quick-options.delete')}"

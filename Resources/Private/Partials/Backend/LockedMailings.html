@@ -5,7 +5,7 @@
 
 <table class="table table-striped table-hover">
 	<thead>
-	<tr>
+	<tr style="height: 45px;">
 		<th width="150"><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.creation-date" /></th>
 		<th width="150"><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.last-update" /></th>
 		<th><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.subject" /></th>
@@ -24,7 +24,7 @@
 				<f:variable name="class" value=""/>
 			</f:else>
 		</f:if>
-		<tr class="{class}">
+		<tr class="{class}" style="height: 45px;">
 			<td width="150">
 				<f:format.date format="d.m.Y">{mailing.crdate}</f:format.date>
 			</td>

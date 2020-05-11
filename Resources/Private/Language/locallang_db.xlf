@@ -106,31 +106,42 @@
                 <source>Cancel</source>
             </trans-unit>
 
-
             <trans-unit id="legend">
-                <source>Legend:</source>
+                <source>Legend</source>
             </trans-unit>
-            <trans-unit id="legend.approved">
-                <source>Approved: is processed on the next run of the queue generation</source>
+            <trans-unit id="legend.approved.title">
+                <source>Approved</source>
             </trans-unit>
-            <trans-unit id="legend.review">
-                <source>Review: will be ignored from the queue generation</source>
+            <trans-unit id="legend.approved.description">
+                <source>is processed on the next run of the queue generation</source>
             </trans-unit>
-            <trans-unit id="legend.draft">
-                <source>Draft: will be ignored from the queue generation</source>
+            <trans-unit id="legend.review.title">
+                <source>Review</source>
             </trans-unit>
-            <trans-unit id="legend.rejected">
-                <source>Rejected: will be closed on the next run of the queue generation</source>
+            <trans-unit id="legend.review.description">
+                <source>will be ignored from the queue generation</source>
+            </trans-unit>
+            <trans-unit id="legend.draft.title">
+                <source>Draft</source>
+            </trans-unit>
+            <trans-unit id="legend.draft.description">
+                <source>will be ignored from the queue generation</source>
+            </trans-unit>
+            <trans-unit id="legend.rejected.title">
+                <source>Rejected</source>
+            </trans-unit>
+            <trans-unit id="legend.rejected.description">
+                <source>will be closed on the next run of the queue generation</source>
             </trans-unit>
 
             <trans-unit id="mailing-administration">
                 <source>Mailing administration</source>
             </trans-unit>
             <trans-unit id="active-mailings">
-                <source>active Mailings</source>
+                <source>Active Mailings</source>
             </trans-unit>
             <trans-unit id="closed-mailings">
-                <source>closed Mailings</source>
+                <source>Closed Mailings</source>
             </trans-unit>
 
             <trans-unit id="table.headline.creation-date">
