@@ -45,11 +45,16 @@ class ProcessMailQueueCommand extends Command implements LoggerAwareInterface
      *
      * @param InputInterface $input
      * @param OutputInterface $output
+     *
      * @throws IllegalObjectTypeException
      * @throws UnknownObjectException
+     *
+     * @return integer
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->queueService->processQueue();
+
+        return 0;
     }
 }

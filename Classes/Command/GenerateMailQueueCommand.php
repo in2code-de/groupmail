@@ -53,12 +53,17 @@ class GenerateMailQueueCommand extends Command implements LoggerAwareInterface
      *
      * @param InputInterface $input
      * @param OutputInterface $output
+     *
      * @throws IllegalObjectTypeException
      * @throws UnknownObjectException
+     *
+     * @return integer
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->mailService->updateRejectedMailings();
         $this->queueService->generateQueue();
+
+        return 0;
     }
 }
