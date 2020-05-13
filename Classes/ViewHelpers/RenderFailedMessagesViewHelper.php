@@ -54,7 +54,7 @@ class RenderFailedMessagesViewHelper extends AbstractViewHelper
                             $content .= '<li>' . $failedItem->getBeUser()->getUserName() . ' (Uid: ' . $failedItem->getBeUser()->getUid() . ')</li>';
                             break;
                         case Context::FRONTEND:
-                            $content .= '<li>' . $failedItem->getFeUser()->getUserName() . ' (Uid: ' . $failedItem->getBeUser()->getUid() . ')</li>';
+                            $content .= '<li>' . $failedItem->getFeUser()->getUserName() . ' (Uid: ' . $failedItem->getFeUser()->getUid() . ')</li>';
                             break;
                     }
                 }
