@@ -169,6 +169,12 @@
             <trans-unit id="status.generated">
                 <source>queue generated</source>
             </trans-unit>
+            <trans-unit id="status.pending">
+                <source>pending</source>
+            </trans-unit>
+            <trans-unit id="status.completed">
+                <source>completed</source>
+            </trans-unit>
 
             <trans-unit id="quick-options.approve">
                 <source>approve mailing</source>
@@ -184,6 +190,24 @@
             </trans-unit>
             <trans-unit id="quick-options.delete">
                 <source>delete mailing</source>
+            </trans-unit>
+            <trans-unit id="errors-title">
+                <source>Some messages of this mailing could't not be sent.</source>
+            </trans-unit>
+            <trans-unit id="from">
+                <source>from</source>
+            </trans-unit>
+            <trans-unit id="mailings-processed">
+                <source>Mailings processed</source>
+            </trans-unit>
+            <trans-unit id="modal.error.title">
+                <source>Error while sending messages</source>
+            </trans-unit>
+            <trans-unit id="modal.error.message">
+                <source>No message could be sent to the following users</source>
+            </trans-unit>
+            <trans-unit id="modal.error.message.additional-information">
+                <source>This could be because the user has no valid email address.</source>
             </trans-unit>
         </body>
     </file>

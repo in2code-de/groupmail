@@ -216,6 +216,14 @@
                 <source>queue generated</source>
                 <target>Warteschlange erstellt</target>
             </trans-unit>
+            <trans-unit id="status.pending">
+                <source>pending</source>
+                <target>ausstehend</target>
+            </trans-unit>
+            <trans-unit id="status.completed">
+                <source>completed</source>
+                <target>abgeschlossen</target>
+            </trans-unit>
 
             <trans-unit id="quick-options.approve">
                 <source>approve mailing</source>
@@ -236,6 +244,30 @@
             <trans-unit id="quick-options.delete">
                 <source>delete mailing</source>
                 <target>Mailing löschen</target>
+            </trans-unit>
+            <trans-unit id="errors-title">
+                <source>Some messages of this mailing could't not be sent.</source>
+                <target>Es konnten Nachrichten aus diesem Mailing nicht versendet werden.</target>
+            </trans-unit>
+            <trans-unit id="from">
+                <source>from</source>
+                <target>von</target>
+            </trans-unit>
+            <trans-unit id="mailings-processed">
+                <source>Mailings processed</source>
+                <target>Mailings verarbeitet</target>
+            </trans-unit>
+            <trans-unit id="modal.error.title">
+                <source>Error while sending messages</source>
+                <target>Fehler beim Versenden von Nachrichten</target>
+            </trans-unit>
+            <trans-unit id="modal.error.message">
+                <source>No message could be sent to the following users</source>
+                <target>Den folgenden Benutzern konnten keine Nachrichten gesendet werden</target>
+            </trans-unit>
+            <trans-unit id="modal.error.message.additional-information">
+                <source>This could be because the user has no valid email address.</source>
+                <target>Das könnte daran liegen, dass dem Benutzer keine Email Adresse zugewiesen ist.</target>
             </trans-unit>
         </body>
     </file>

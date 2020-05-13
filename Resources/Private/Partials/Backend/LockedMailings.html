@@ -3,62 +3,152 @@
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
 	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
 
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) {
+		var pagination = document.querySelector('.pagination-wrap');
+		pagination.style.display = 'none';
+
+
+		document.querySelector('.in2bemail-js-pagination').appendChild(pagination);
+		pagination.style.display = 'block';
+	});
+
+	function openModal(title, message) {
+		var decodedMessage = $("<div/>").html(message).text();
+		btns = [
+			{
+				text: 'OK',
+				btnClass: 'btn-warning',
+				name: 'ok',
+				trigger: function() {
+					top.TYPO3.Modal.dismiss();
+				}
+			}];
+		top.TYPO3.Modal.confirm(
+			title,
+			$(message),
+			top.TYPO3.Severity.warning,
+			btns
+		);
+	}
+</script>
+
 <table class="table table-striped table-hover">
 	<thead>
 	<tr style="height: 45px;">
-		<th width="150"><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.creation-date" /></th>
-		<th width="150"><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.last-update" /></th>
-		<th><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.subject" /></th>
-		<th><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.context" /></th>
-		<th><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.groups" /></th>
-		<th width="200"><f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.status" /></th>
+		<th width="150">
+			<f:translate
+					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.creation-date"/>
+		</th>
+		<th width="150">
+			<f:translate
+					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.last-update"/>
+		</th>
+		<th>
+			<f:translate
+					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.subject"/>
+		</th>
+		<th>
+			<f:translate
+					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.context"/>
+		</th>
+		<th>
+			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.groups"/>
+		</th>
+		<th width="200">
+			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.status"/>
+		</th>
 	</tr>
 	</thead>
 	<tbody>
-	<f:for each="{mailings}" as="mailing">
-		<f:if condition="{mailing.rejected}">
-			<f:then>
-				<f:variable name="class" value="danger"/>
-			</f:then>
-			<f:else>
-				<f:variable name="class" value=""/>
-			</f:else>
-		</f:if>
-		<tr class="{class}" style="height: 45px;">
-			<td width="150">
-				<f:format.date format="d.m.Y">{mailing.crdate}</f:format.date>
-			</td>
-			<td width="150">
-				<f:format.date format="d.m.Y">{mailing.tstamp}</f:format.date>
-			</td>
-			<td>{mailing.subject}</td>
-			<td>
-				<f:switch expression="{mailing.context}">
-					<f:case value="fe">
-						<f:translate
-								key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.frontend"/>
-					</f:case>
-					<f:case value="be">
-						<f:translate
-								key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.backend"/>
-					</f:case>
-				</f:switch>
-			</td>
-			<td>
-				<f:render partial="Backend/GroupList" arguments="{mailing:mailing}"/>
-			</td>
-			<td width="200">
-				<f:if condition="{mailing.rejected}">
-					<f:then>
-						<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.rejected" />
-					</f:then>
-					<f:else>
-						<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.generated" />
-					</f:else>
-				</f:if>
+	<f:be.widget.paginate objects="{mailings}" as="paginatedMailings" configuration="{itemsPerPage: 10, insertAbove: 0, insertBelow: 1, recordsLabel: 'Mailings'}">
+		<f:for each="{paginatedMailings}" as="mailing">
+			<f:variable name="status" value="{in2bemail:getStatus(mailing: '{mailing}')}"/>
+
+			<f:if condition="{mailing.rejected}">
+				<f:then>
+					<f:variable name="class" value="danger"/>
+				</f:then>
+				<f:else>
+					<f:variable name="class" value=""/>
+				</f:else>
+			</f:if>
+			<tr class="{class}" style="height: 45px;">
+				<td width="150">
+					<f:format.date format="d.m.Y">{mailing.crdate}</f:format.date>
+				</td>
+				<td width="150">
+					<f:format.date format="d.m.Y">{mailing.tstamp}</f:format.date>
+				</td>
+				<td>{mailing.subject}</td>
+				<td>
+					<f:switch expression="{mailing.context}">
+						<f:case value="fe">
+							<f:translate
+									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.frontend"/>
+						</f:case>
+						<f:case value="be">
+							<f:translate
+									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.backend"/>
+						</f:case>
+					</f:switch>
+				</td>
+				<td>
+					<f:render partial="Backend/GroupList" arguments="{mailing:mailing}"/>
+					<f:if condition="{status.failed}">
+						<f:variable name="failed" value="{in2bemail:renderFailedMessages(mailing: '{mailing}')}"/>
+						<f:variable name="message" value="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:errors-title')}" />
+						<a href="javascript:openModal('{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.error.title')}','{failed}')"
+						   title="{message}">
+							<core:icon identifier="status-dialog-warning" size="small"/>
+						</a>
+					</f:if>
+				</td>
+				<td width="200">
+					<f:if condition="{mailing.rejected}">
+						<f:then>
+							<f:translate
+									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.rejected"/>
+						</f:then>
+						<f:else>
+							<f:if condition="{status.percentageDone} == 100">
+								<f:then>
+									<f:translate
+											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.completed"/>
+								</f:then>
+								<f:else>
+									<f:if condition="{status.notSent} == {status.count}">
+										<f:then>
+											<f:translate
+													key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.pending"/>
+										</f:then>
+										<f:else>
+											<f:variable name="progressTitle" value="{status.count - status.notSent} {f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:from')} {status.count} {f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:mailings-processed')}"/>
+											<div class="progress" style="margin-bottom: 0;"
+												 title="{progressTitle}">
+												<div class="progress-bar" role="progressbar"
+													 style="width: {status.percentageDone}%;"
+													 aria-valuenow="{status.count - status.notSent}" aria-valuemin="0"
+													 aria-valuemax="{status.count}">{status.percentageDone}%
+												</div>
+											</div>
+										</f:else>
+									</f:if>
+								</f:else>
+							</f:if>
+						</f:else>
+					</f:if>
+				</td>
+			</tr>
+		</f:for>
+	</f:be.widget.paginate>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="6">
+				<div class="in2bemail-js-pagination"></div>
 			</td>
 		</tr>
-	</f:for>
-	</tbody>
+	</tfoot>
 </table>
 </html>
