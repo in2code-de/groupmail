@@ -1,0 +1,137 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="panel panel-default">
+	<div class="panel-heading">Gruppen wählen</div>
+	<fieldset class="form-section">
+		<f:comment>
+			Frontend Groups:
+		</f:comment>
+		<div class="form-wizards-element js-in2bemail-fe-groups" data-in2bemail-type="side-by-side">
+			<div class="form-multigroup-wrap">
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="feGroups">
+						Selected Groups
+					</label>
+					<div class="form-wizards-wrap form-wizards-aside">
+						<div class="form-wizards-element">
+							<f:form.select name="feGroups"
+										   property="feGroups"
+										   multiple="multiple"
+										   options="{feGroups}"
+										   optionValueField="uid"
+										   optionLabelField="title"
+										   title="feGroups"
+										   size="10"
+										   class="form-control tceforms-multiselect js-in2bemail-selected-items">
+							</f:form.select>
+						</div>
+						<div class="form-wizards-items-aside">
+							<div class="btn-group-vertical">
+								<a href="#" class="btn btn-default js-in2bemail-move-item-begin"
+								   title="Move selected items to top">
+									<core:icon identifier="actions-move-to-top" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-move-item-up"
+								   title="Move selected items upwards">
+									<core:icon identifier="actions-move-up" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-move-item-down"
+								   title="Move selected items downwards">
+									<core:icon identifier="actions-move-down" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-move-item-end"
+								   title="Move selected items to bottom">
+									<core:icon identifier="actions-move-to-bottom" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-remove-item"
+								   title="Remove selected items">
+									<core:icon identifier="actions-selection-delete" size="small"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="availableFeGroups">
+						Groups
+					</label>
+					<div class="form-wizards-element">
+						<select multiple="multiple" name="availableFeGroups" title="availableGroups"
+								class="form-control tceforms-multiselect js-in2bemail-available-items" size="10" >
+							<f:for each="{feGroups}" as="group">
+								<f:form.select.option value="{group.uid}" data="{in2bemail-selectable-item:'true'}">{group.title}</f:form.select.option>
+							</f:for>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<f:comment>
+			Backend Groups:
+		</f:comment>
+		<div class="form-wizards-element in2bemail-hide js-in2bemail-be-groups" data-in2bemail-type="side-by-side">
+			<div class="form-multigroup-wrap">
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="beGroups">
+						Selected Groups
+					</label>
+					<div class="form-wizards-wrap form-wizards-aside">
+						<div class="form-wizards-element">
+							<f:form.select name="beGroups"
+										   property="beGroups"
+										   options="{beGroups}"
+										   optionValueField="uid"
+										   optionLabelField="title"
+										   multiple="multiple"
+										   title="beGroups"
+										   size="10"
+										   class="form-control tceforms-multiselect js-in2bemail-selected-items">
+							</f:form.select>
+						</div>
+						<div class="form-wizards-items-aside">
+							<div class="btn-group-vertical">
+								<a href="#" class="btn btn-default js-in2bemail-move-item-begin"
+								   title="Move selected items to top">
+									<core:icon identifier="actions-move-to-top" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-move-item-up"
+								   title="Move selected items upwards">
+									<core:icon identifier="actions-move-up" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-move-item-down"
+								   title="Move selected items downwards">
+									<core:icon identifier="actions-move-down" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-move-item-end"
+								   title="Move selected items to bottom">
+									<core:icon identifier="actions-move-to-bottom" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-in2bemail-remove-item"
+								   title="Remove selected items">
+									<core:icon identifier="actions-selection-delete" size="small"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="availableBeGroups">
+						Groups
+					</label>
+					<div class="form-wizards-element">
+						<select multiple="multiple" name="availableBeGroups" title="availableBeGroups"
+								class="form-control tceforms-multiselect js-in2bemail-available-items" size="10">
+							<f:for each="{beGroups}" as="group">
+								<f:form.select.option value="{group.uid}" data="{in2bemail-selectable-item:'true'}">{group.title}</f:form.select.option>
+							</f:for>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+</html>

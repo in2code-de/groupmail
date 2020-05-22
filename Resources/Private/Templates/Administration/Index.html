@@ -12,82 +12,83 @@
 </f:section>
 
 <f:section name="content">
-	<h3>
-		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:active-mailings"/>:
-	</h3>
-	<div class="panel panel-default">
-		<f:render partial="Backend/ActiveMailings" arguments="{mailings:activeMailings}"/>
-	</div>
+	<div class="js-in2bemail-index">
+		<h3>
+			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:active-mailings"/>:
+		</h3>
+		<div class="panel panel-default">
+			<f:render partial="Backend/ActiveMailings" arguments="{mailings:activeMailings}"/>
+		</div>
 
-	<h3>
-		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:closed-mailings"/>:
-	</h3>
-	<div class="panel panel-default">
-		<f:render partial="Backend/LockedMailings" arguments="{mailings:lockedMailings}"/>
-	</div>
-	<f:be.infobox title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend')}"
-				  disableIcon="true">
-		<div class="in2bemail-workflow-legend-container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="in2bemail-workflow-legend">
-						<span class="in2bemail-circle in2bemail-yellow"></span>
-						<p>
-							<strong>
+		<h3>
+			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:closed-mailings"/>:
+		</h3>
+		<div class="panel panel-default">
+			<f:render partial="Backend/LockedMailings" arguments="{mailings:lockedMailings}"/>
+		</div>
+		<f:be.infobox title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend')}"
+					  disableIcon="true">
+			<div class="in2bemail-workflow-legend-container">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="in2bemail-workflow-legend">
+							<span class="in2bemail-circle in2bemail-yellow"></span>
+							<p>
+								<strong>
+									<f:translate
+											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.draft.title"/>:
+								</strong>
+								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.draft.title"/>:
-							</strong>
-							<br/>
-							<f:translate
-									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.draft.description"/>
-						</p>
+										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.draft.description"/>
+							</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="in2bemail-workflow-legend">
-						<span class="in2bemail-circle in2bemail-blue"></span>
-						<p>
-							<strong>
+					<div class="col-md-3">
+						<div class="in2bemail-workflow-legend">
+							<span class="in2bemail-circle in2bemail-blue"></span>
+							<p>
+								<strong>
+									<f:translate
+											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.review.title"/>:
+								</strong>
+								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.review.title"/>:
-							</strong>
-							<br/>
-							<f:translate
-									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.review.description"/>
-						</p>
+										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.review.description"/>
+							</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="in2bemail-workflow-legend">
-						<span class="in2bemail-circle in2bemail-green"></span>
-						<p>
-							<strong>
+					<div class="col-md-3">
+						<div class="in2bemail-workflow-legend">
+							<span class="in2bemail-circle in2bemail-green"></span>
+							<p>
+								<strong>
+									<f:translate
+											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.approved.title"/>:
+								</strong>
+								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.approved.title"/>:
-							</strong>
-							<br/>
-							<f:translate
-									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.approved.desciption"/>
-						</p>
+										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.approved.desciption"/>
+							</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="in2bemail-workflow-legend">
-						<span class="in2bemail-circle in2bemail-red"></span>
-						<p>
-							<strong>
+					<div class="col-md-3">
+						<div class="in2bemail-workflow-legend">
+							<span class="in2bemail-circle in2bemail-red"></span>
+							<p>
+								<strong>
+									<f:translate
+											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.rejected.title"/>:
+								</strong>
+								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.rejected.title"/>:
-							</strong>
-							<br/>
-							<f:translate
 										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.rejected.description"/>
-						</p>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</f:be.infobox>
-
+		</f:be.infobox>
+	</div>
 </f:section>
 </html>

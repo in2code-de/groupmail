@@ -1,0 +1,58 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="panel panel-default">
+	<div class="panel-heading">Mailing</div>
+	<fieldset class="form-section">
+		<div class="form-group">
+			<div class="formengine-field-item">
+				<div class="form-control-wrap">
+					<div class="form-wizards-wrap">
+						<div class="form-wizards-element">
+							<div class="input-group">
+								<label for="subject">
+									Subject
+								</label>
+								<f:form.textfield name="subject" property="subject"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="formengine-field-item">
+				<div class="form-control-wrap">
+					<div class="form-wizards-wrap">
+						<div class="form-wizards-element">
+							<div class="input-group">
+								<label for="subject">
+									Bodytext
+								</label>
+								<f:form.textarea cols="70" rows="15" name="bodytext" property="bodytext" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="formengine-field-item">
+				<div class="form-control-wrap">
+					<div class="form-wizards-wrap">
+						<div class="form-wizards-element">
+							<div class="input-group">
+								<label for="files">
+									Dateien
+								</label>
+								<f:form.upload name="files" multiple="multiple" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+</html>

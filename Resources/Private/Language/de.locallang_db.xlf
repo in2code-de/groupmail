@@ -269,6 +269,15 @@
                 <source>This could be because the user has no valid email address.</source>
                 <target>Das könnte daran liegen, dass dem Benutzer keine Email Adresse zugewiesen ist.</target>
             </trans-unit>
+
+            <trans-unit id="module.new">
+                <source>New Mailing</source>
+                <target>Neues Mailing</target>
+            </trans-unit>
+            <trans-unit id="module.administration">
+                <source>Administration</source>
+                <target>Administration</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

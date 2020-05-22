@@ -209,6 +209,13 @@
             <trans-unit id="modal.error.message.additional-information">
                 <source>This could be because the user has no valid email address.</source>
             </trans-unit>
+
+            <trans-unit id="module.new">
+                <source>New Mailing</source>
+            </trans-unit>
+            <trans-unit id="module.administration">
+                <source>Administration</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

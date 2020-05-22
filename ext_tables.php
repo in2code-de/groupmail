@@ -12,7 +12,7 @@ call_user_func(
             'administration',
             'bottom',
             [
-                AdministrationController::class => 'index',
+                AdministrationController::class => 'index, new, create',
             ],
             [
                 'access' => 'user,group',

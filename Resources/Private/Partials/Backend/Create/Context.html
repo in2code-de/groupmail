@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+
+</html>
+
+<div class="panel panel-default">
+	<div class="panel-heading">Mailing Type wählen</div>
+
+	<fieldset class="form-section">
+		<div class="form-group">
+			<div class="formengine-field-item">
+
+				<div class="form-control-wrap">
+					<div class="form-wizards-wrap">
+						<div class="form-wizards-element">
+							<div class="input-group">
+								<f:form.select name="context" property="context" class="js-in2bemail-context">
+									<f:form.select.option value="fe">Frontend</f:form.select.option>
+									<f:form.select.option value="be">Backend</f:form.select.option>
+								</f:form.select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
