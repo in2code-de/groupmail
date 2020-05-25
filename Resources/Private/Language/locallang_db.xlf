@@ -223,6 +223,49 @@
             <trans-unit id="message.mailing-created.message">
                 <source>a new mailing was created</source>
             </trans-unit>
+
+            <trans-unit id="create-mailing">
+                <source>Create new Mailing</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.select-context">
+                <source>Select mailing type</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.context">
+                <source>Context</source>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.select-groups">
+                <source>Select Groups</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.selected-groups">
+                <source>selected Groups</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.available-groups">
+                <source>available Groups</source>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.mailing">
+                <source>Mailing</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.sender-name">
+                <source>Sender Name</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.sender-mail">
+                <source>Sender Email</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.subject">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.bodytext">
+                <source>Bodytext</source>
+            </trans-unit>
+            <trans-unit id="create-mailing.attachments">
+                <source>Attachments</source>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.create">
+                <source>Create</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

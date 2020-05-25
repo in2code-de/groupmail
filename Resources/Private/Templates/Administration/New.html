@@ -7,7 +7,7 @@
 
 <f:section name="headline">
 	<h1>
-		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:mailing-administration"/>
+		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing"/>
 	</h1>
 </f:section>
 
@@ -20,7 +20,8 @@
 
 			<f:render partial="Backend/Create/Mailing" arguments="{_all}"/>
 
-			<f:form.submit class="js-in2bemail-create-mailing btn btn-default" value="Submit" />
+
+			<f:form.submit class="js-in2bemail-create-mailing btn btn-default" value="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.create')}" />
 		</f:form>
 	</div>
 </f:section>

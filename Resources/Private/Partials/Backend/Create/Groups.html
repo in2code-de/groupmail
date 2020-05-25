@@ -3,8 +3,10 @@
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
 	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
 <div class="panel panel-default">
-	<div class="panel-heading">Gruppen wählen</div>
-	<fieldset class="form-section">
+	<div class="panel-heading">
+		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.select-groups"/>
+	</div>
+	<fieldset class="form-section" style="margin-bottom: 15px;">
 		<f:comment>
 			Frontend Groups:
 		</f:comment>
@@ -12,7 +14,7 @@
 			<div class="form-multigroup-wrap">
 				<div class="form-multigroup-item form-multigroup-element">
 					<label for="feGroups">
-						Selected Groups
+						<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.selected-groups"/>
 					</label>
 					<div class="form-wizards-wrap form-wizards-aside">
 						<div class="form-wizards-element">
@@ -24,7 +26,7 @@
 										   optionLabelField="title"
 										   title="feGroups"
 										   size="10"
-										   class="form-control tceforms-multiselect js-in2bemail-selected-items">
+										   class="form-control tceforms-multiselect js-in2bemail-selected-items in2bemail-select">
 							</f:form.select>
 						</div>
 						<div class="form-wizards-items-aside">
@@ -55,13 +57,15 @@
 				</div>
 				<div class="form-multigroup-item form-multigroup-element">
 					<label for="availableFeGroups">
-						Groups
+						<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.available-groups"/>
 					</label>
 					<div class="form-wizards-element">
 						<select multiple="multiple" name="availableFeGroups" title="availableGroups"
-								class="form-control tceforms-multiselect js-in2bemail-available-items" size="10" >
+								class="form-control tceforms-multiselect js-in2bemail-available-items in2bemail-select" size="10">
 							<f:for each="{feGroups}" as="group">
-								<f:form.select.option value="{group.uid}" data="{in2bemail-selectable-item:'true'}">{group.title}</f:form.select.option>
+								<f:form.select.option value="{group.uid}"
+													  data="{in2bemail-selectable-item:'true'}">{group.title}
+								</f:form.select.option>
 							</f:for>
 						</select>
 					</div>
@@ -76,7 +80,7 @@
 			<div class="form-multigroup-wrap">
 				<div class="form-multigroup-item form-multigroup-element">
 					<label for="beGroups">
-						Selected Groups
+						<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.selected-groups"/>
 					</label>
 					<div class="form-wizards-wrap form-wizards-aside">
 						<div class="form-wizards-element">
@@ -88,7 +92,7 @@
 										   multiple="multiple"
 										   title="beGroups"
 										   size="10"
-										   class="form-control tceforms-multiselect js-in2bemail-selected-items">
+										   class="form-control tceforms-multiselect js-in2bemail-selected-items in2bemail-select">
 							</f:form.select>
 						</div>
 						<div class="form-wizards-items-aside">
@@ -119,13 +123,15 @@
 				</div>
 				<div class="form-multigroup-item form-multigroup-element">
 					<label for="availableBeGroups">
-						Groups
+						<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.available-groups"/>
 					</label>
 					<div class="form-wizards-element">
 						<select multiple="multiple" name="availableBeGroups" title="availableBeGroups"
-								class="form-control tceforms-multiselect js-in2bemail-available-items" size="10">
+								class="form-control tceforms-multiselect js-in2bemail-available-items in2bemail-select" size="10">
 							<f:for each="{beGroups}" as="group">
-								<f:form.select.option value="{group.uid}" data="{in2bemail-selectable-item:'true'}">{group.title}</f:form.select.option>
+								<f:form.select.option value="{group.uid}"
+													  data="{in2bemail-selectable-item:'true'}">{group.title}
+								</f:form.select.option>
 							</f:for>
 						</select>
 					</div>

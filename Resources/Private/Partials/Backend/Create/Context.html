@@ -3,14 +3,17 @@
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
 	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
 
-</html>
-
 <div class="panel panel-default">
-	<div class="panel-heading">Mailing Type wählen</div>
+	<div class="panel-heading">
+		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.select-context"/>
+	</div>
 
 	<fieldset class="form-section">
 		<div class="form-group">
-			<label for="context" class="col-sm-1 control-label">Context</label>
+			<label for="context" class="col-sm-1 control-label">
+				<f:translate
+						key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.context"/>
+			</label>
 			<div class="col-sm-5">
 				<f:form.select name="context" property="context" class="js-in2bemail-context form-control">
 					<f:form.select.option value="fe">Frontend</f:form.select.option>
@@ -20,3 +23,4 @@
 		</div>
 	</fieldset>
 </div>
+</html>

@@ -287,6 +287,62 @@
                 <source>a new mailing was created</source>
                 <target>ein neues Mailing wurde erstellt</target>
             </trans-unit>
+
+            <trans-unit id="create-mailing">
+                <source>Create new Mailing</source>
+                <target>Neues Mailing erstellen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.select-context">
+                <source>Select mailing type</source>
+                <target>Mailing Typ auswählen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.context">
+                <source>Context</source>
+                <target>Context</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.select-groups">
+                <source>Select Groups</source>
+                <target>Gruppen auswählen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.selected-groups">
+                <source>selected Groups</source>
+                <target>gewählte Gruppen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.available-groups">
+                <source>available Groups</source>
+                <target>verfügbare Gruppen</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.mailing">
+                <source>Mailing</source>
+                <target>Mailing</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.sender-name">
+                <source>Sender Name</source>
+                <target>Absender Name</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.sender-mail">
+                <source>Sender Email</source>
+                <target>Absender Email</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.subject">
+                <source>Subject</source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.bodytext">
+                <source>Bodytext</source>
+                <target>Email Inhalt</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.attachments">
+                <source>Attachments</source>
+                <target>Anhänge</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.create">
+                <source>Create</source>
+                <target>Erstellen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

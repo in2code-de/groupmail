@@ -41,6 +41,10 @@
     background-color: #d6e7f6;
 }
 
+select.form-control.in2bemail-select[multiple] {
+    min-height: 210px;
+}
+
 .in2bemail-loader {
     position: fixed;
     top: 0;
