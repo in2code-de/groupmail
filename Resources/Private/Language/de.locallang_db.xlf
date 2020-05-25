@@ -203,6 +203,10 @@
                 <source>groups</source>
                 <target>Gruppen</target>
             </trans-unit>
+            <trans-unit id="table.headline.receiver">
+                <source>Receiver</source>
+                <target>Empänger</target>
+            </trans-unit>
             <trans-unit id="table.headline.status">
                 <source>status</source>
                 <target>Status</target>

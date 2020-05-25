@@ -159,6 +159,9 @@
             <trans-unit id="table.headline.groups">
                 <source>groups</source>
             </trans-unit>
+            <trans-unit id="table.headline.receiver">
+                <source>Receiver</source>
+            </trans-unit>
             <trans-unit id="table.headline.status">
                 <source>status</source>
             </trans-unit>

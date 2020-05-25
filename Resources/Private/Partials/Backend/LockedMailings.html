@@ -55,6 +55,9 @@
 		<th>
 			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.groups"/>
 		</th>
+		<th>
+			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.receiver"/>
+		</th>
 		<th width="200">
 			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.status"/>
 		</th>
@@ -104,6 +107,9 @@
 						</a>
 					</f:if>
 				</td>
+				<td>
+					{status.count}
+				</td>
 				<td width="200">
 					<f:if condition="{mailing.rejected}">
 						<f:then>
@@ -145,7 +151,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="6">
+			<td colspan="7">
 				<div class="in2bemail-js-pagination"></div>
 			</td>
 		</tr>
