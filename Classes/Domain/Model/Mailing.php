@@ -6,6 +6,7 @@ namespace In2code\In2bemail\Domain\Model;
 use In2code\In2bemail\Context\Context;
 use In2code\In2bemail\Workflow\Workflow;
 use TYPO3\CMS\Core\Mail\FluidEmail;
+use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -85,10 +86,16 @@ class Mailing extends AbstractEntity
      */
     protected $crdate;
 
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $attachments;
+
     public function __construct()
     {
         $this->beGroups = new ObjectStorage();
         $this->feGroups = new ObjectStorage();
+        $this->attachments = new ObjectStorage();
     }
 
     /**
@@ -383,4 +390,41 @@ class Mailing extends AbstractEntity
         return $this;
     }
 
+    /**
+     * @param FileReference $attachment
+     * @return $this
+     */
+    public function addAttachment(FileReference $attachment): Mailing
+    {
+        $this->attachments->attach($attachment);
+        return $this;
+    }
+
+    /**
+     * @param FileReference $attachment
+     * @return $this
+     */
+    public function removeAttachment(FileReference $attachment): Mailing
+    {
+        $this->attachments->detach($attachment);
+        return $this;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getAttachments(): ObjectStorage
+    {
+        return $this->attachments;
+    }
+
+    /**
+     * @param ObjectStorage $attachments
+     * @return Mailing
+     */
+    public function setAttachments(ObjectStorage $attachments): Mailing
+    {
+        $this->attachments = $attachments;
+        return $this;
+    }
 }

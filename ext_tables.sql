@@ -15,6 +15,7 @@ CREATE TABLE tx_in2bemail_domain_model_mailing
     workflow_state                int(11) unsigned    DEFAULT '1'    NOT NULL,
     workflow_status_change_tstamp int(11) unsigned    DEFAULT '0'    NOT NULL,
     rejected                      tinyint(4) unsigned DEFAULT '0'    NOT NULL,
+    attachments                   int(11)             DEFAULT '0'    NOT NULL,
 
     tstamp                        int(11) unsigned    DEFAULT '0'    NOT NULL,
     crdate                        int(11) unsigned    DEFAULT '0'    NOT NULL,
@@ -95,4 +96,3 @@ CREATE TABLE tx_in2bemail_mailing_fe_groups_mm
     KEY uid_local (uid_local),
     KEY uid_foreign (uid_foreign)
 );
-

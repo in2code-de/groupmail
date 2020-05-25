@@ -278,6 +278,15 @@
                 <source>Administration</source>
                 <target>Administration</target>
             </trans-unit>
+
+            <trans-unit id="message.mailing-created.title">
+                <source>Mailing created</source>
+                <target>Neues Mailing erstellt</target>
+            </trans-unit>
+            <trans-unit id="message.mailing-created.message">
+                <source>a new mailing was created</source>
+                <target>ein neues Mailing wurde erstellt</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -6,8 +6,10 @@ namespace In2code\In2bemail\Controller;
 use In2code\In2bemail\Context\Context;
 use In2code\In2bemail\Domain\Model\Mailing;
 use In2code\In2bemail\Domain\Repository\MailingRepository;
+use In2code\In2bemail\Service\AttachmentService;
 use TYPO3\CMS\Backend\Template\Components\Menu\Menu;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Extbase\Domain\Repository\BackendUserGroupRepository;
 use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserGroupRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -41,15 +43,22 @@ class AdministrationController extends ActionController
      */
     protected $mailingRepository;
 
+    /**
+     * @var AttachmentService
+     */
+    protected $attachmentService;
+
     public function __construct(
         MailingRepository $mailingRepository,
         BackendUserGroupRepository $backendUserGroupRepository,
-        FrontendUserGroupRepository $frontendUserGroupRepository
+        FrontendUserGroupRepository $frontendUserGroupRepository,
+        AttachmentService $attachmentService
+
     ) {
         $this->mailingRepository = $mailingRepository;
         $this->backendUserGroupRepository = $backendUserGroupRepository;
         $this->frontendUserGroupRepository = $frontendUserGroupRepository;
-
+        $this->attachmentService = $attachmentService;
     }
 
     /**
@@ -90,17 +99,64 @@ class AdministrationController extends ActionController
         );
     }
 
-    public function createAction(Mailing $mailing)
+    /**
+     * @param Mailing $mailing
+     * @param array $files
+     * @throws \TYPO3\CMS\Core\Resource\Exception\ExistingTargetFileNameException
+     * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     */
+    public function createAction(Mailing $mailing, array $files)
     {
         $this->removeContextForeignGroups($mailing);
+        $this->setFallbackSenderData($mailing);
 
-        
+        $this->mailingRepository->add($mailing);
+
+        if ($files[0]['error'] !== UPLOAD_ERR_NO_FILE) {
+            $attachmentsCreated = $this->attachmentService->addAttachments($mailing, $files);
+            if (!$attachmentsCreated) {
+                $this->addFlashMessage(
+                    'while uploading the attachments. Please visit the log for further information',
+                    'an error occurred',
+                    FlashMessage::ERROR
+                );
+            }
+        }
+
+        $this->addFlashMessage(
+            LocalizationUtility::translate(
+                'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:message.mailing-created.message'
+            ),
+            LocalizationUtility::translate(
+                'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:message.mailing-created.title'
+            ),
+            FlashMessage::OK
+        );
+
+        $this->redirect('index');
+
     }
 
     /**
      * @param Mailing $mailing
      */
-    protected function removeContextForeignGroups(Mailing $mailing) {
+    protected function setFallbackSenderData(Mailing $mailing)
+    {
+        if (empty($mailing->getSenderName())) {
+            $mailing->setSenderName($GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName']);
+        }
+
+        if (empty($mailing->getSenderMail())) {
+            $mailing->setSenderMail($GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress']);
+        }
+    }
+
+    /**
+     * @param Mailing $mailing
+     */
+    protected function removeContextForeignGroups(Mailing $mailing)
+    {
         if ($mailing->getContext() === Context::FRONTEND) {
             $mailing->setBeGroups(new ObjectStorage());
         }
@@ -108,9 +164,6 @@ class AdministrationController extends ActionController
         if ($mailing->getContext() === Context::BACKEND) {
             $mailing->setFeGroups(new ObjectStorage());
         }
-        
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($mailing, __CLASS__ . ' in der Zeile ' . __LINE__);
-        die();
     }
 
     /**

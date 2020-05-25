@@ -33,8 +33,8 @@ return [
         'showRecordFieldList' => 'be_groups,fe_groups,workflow_state,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated,hidden',
     ],
     'types' => [
-        'fe' => ['showitem' => 'context,fe_groups,workflow_state,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
-        'be' => ['showitem' => 'context,be_groups,workflow_state,subject,bodytext,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'fe' => ['showitem' => 'context,fe_groups,workflow_state,subject,bodytext,attachments,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'be' => ['showitem' => 'context,be_groups,workflow_state,subject,bodytext,attachments,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
     ],
     'palettes' => [
         'sender' => [
@@ -127,6 +127,11 @@ return [
                 'rows' => 15,
                 'eval' => 'trim,required',
             ],
+        ],
+        'attachments' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.attachments',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('attachments'),
         ],
         'mail_format' => [
             'exclude' => true,

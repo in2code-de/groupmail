@@ -26,10 +26,24 @@ class AbstractRepository extends Repository implements LoggerAwareInterface
     }
 
     /**
+     * Adds an object to this repository
+     *
+     * @param object $object The object to add
+     * @throws IllegalObjectTypeException
+     */
+    public function add($object)
+    {
+        parent::add($object);
+        $this->persistenceManager->persistAll();
+    }
+
+    /**
      * @param array $properties
      * @param AbstractDomainObject $object
+     *
+     * @return int|null
      */
-    public function createRecord(array $properties, AbstractDomainObject $object): void
+    public function createRecord(array $properties, AbstractDomainObject $object): ?int
     {
         foreach ($properties as $property => $value) {
             if ($object->_hasProperty($property)) {
@@ -40,5 +54,7 @@ class AbstractRepository extends Repository implements LoggerAwareInterface
         $this->persistenceManager->add($object);
         $this->logger->debug('create ' . get_class($object) . ' record', $properties);
         $this->persistenceManager->persistAll();
+
+        return $this->persistenceManager->getIdentifierByObject($object);
     }
 }

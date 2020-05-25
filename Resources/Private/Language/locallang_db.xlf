@@ -216,6 +216,13 @@
             <trans-unit id="module.administration">
                 <source>Administration</source>
             </trans-unit>
+
+            <trans-unit id="message.mailing-created.title">
+                <source>Mailing created</source>
+            </trans-unit>
+            <trans-unit id="message.mailing-created.message">
+                <source>a new mailing was created</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

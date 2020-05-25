@@ -11,12 +11,15 @@ use In2code\In2bemail\Utility\ConfigurationUtility;
 use In2code\In2bemail\Workflow\Workflow;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\Mailer;
+use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -33,16 +36,22 @@ class MailService extends AbstractService
     protected $queryBuilder;
 
     /**
+     * @var AttachmentService
+     */
+    protected $attachmentService;
+
+    /**
      * MailService constructor.
      *
      * @param MailingRepository $mailingRepository
+     * @param AttachmentService $attachmentService
      */
-    public function __construct(MailingRepository $mailingRepository)
+    public function __construct(MailingRepository $mailingRepository, AttachmentService $attachmentService)
     {
         $this->mailingRepository = $mailingRepository;
         $this->queryBuilder =
             GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(Mailing::TABLE);
-
+        $this->attachmentService = $attachmentService;
     }
 
     /**
@@ -56,7 +65,7 @@ class MailService extends AbstractService
      * @param string $context valid options are Context::FRONTEND or Context::BACKEND
      * @param int $workflowState valid options are Workflow::STATE_DRAFT, Workflow::STATE_REVIEW,
      *     Workflow::STATE_APPROVED or Workflow::STATE_REJECTED
-     * @param array $attachments
+     * @param FileInterface[] $attachments
      *
      * @api
      */
@@ -84,7 +93,8 @@ class MailService extends AbstractService
             $senderEmail,
             $mailFormat,
             $context,
-            $workflowState
+            $workflowState,
+            $attachments
         )) {
             throw new \InvalidArgumentException(
                 'The argument validation of generateMailing failed. For more Information take a look in the logs',
@@ -97,7 +107,7 @@ class MailService extends AbstractService
             $groupStorage->attach($group);
         }
 
-        $this->mailingRepository->createRecord(
+        $mailingUid = $this->mailingRepository->createRecord(
             [
                 $context . 'Groups' => $groupStorage,
                 'subject' => $subject,
@@ -106,11 +116,14 @@ class MailService extends AbstractService
                 'senderName' => $senderName,
                 'mailFormat' => $mailFormat,
                 'context' => $context,
-                'pid' => ConfigurationUtility::getStoragePid()
+                'pid' => ConfigurationUtility::getStoragePid(),
             ],
             new Mailing()
         );
-        $this->uploadAttachments([]);
+
+        if (!is_null($mailingUid)) {
+            $this->attachmentService->createFileReferences($attachments, (int)$mailingUid);
+        }
     }
 
     /**
@@ -119,6 +132,7 @@ class MailService extends AbstractService
      * @param string $mailFormat
      * @param string $context
      * @param int $workflowState
+     * @param FileInterface[] $attachments
      * @return bool
      */
     protected function validateArguments(
@@ -126,7 +140,8 @@ class MailService extends AbstractService
         string $senderEmail,
         string $mailFormat,
         string $context,
-        int $workflowState
+        int $workflowState,
+        array $attachments
     ): bool {
         $valid = true;
 
@@ -203,13 +218,20 @@ class MailService extends AbstractService
             }
         }
 
-        return $valid;
-    }
+        foreach ($attachments as $key => $attachment) {
+            if (!$attachment instanceof FileInterface) {
+                $this->logger->error(
+                    'An not valid attachment was removed.',
+                    [
+                        'additionalInfo' => ['class' => __CLASS__, 'method' => __METHOD__, 'line' => __LINE__],
+                        'invalidGroup' => json_encode($attachment)
+                    ]
+                );
+                unset($attachments[$key]);
+            }
+        }
 
-    protected function uploadAttachments(
-        array $attachments
-    ) {
-        // @todo implement function
+        return $valid;
     }
 
     /**
@@ -272,6 +294,15 @@ class MailService extends AbstractService
                 ->setTemplate('Mailing')
                 ->format($queueEntry->getMailing()->getMailFormat())
                 ->assign('content', $queueEntry->getMailing()->getBodytext());
+
+            if ($queueEntry->getMailing()->getAttachments()->count() > 0) {
+                /** @var FileReference $attachment */
+                foreach ($queueEntry->getMailing()->getAttachments() as $attachment) {
+                    $publicPath = Environment::getPublicPath() . '/fileadmin';
+                    $combinedIdenitifer = $publicPath . $attachment->getOriginalResource()->getIdentifier();
+                    $email->attachFromPath($combinedIdenitifer, $attachment->getOriginalResource()->getName());
+                }
+            }
 
             try {
                 GeneralUtility::makeInstance(Mailer::class)->send($email);
