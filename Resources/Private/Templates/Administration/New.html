@@ -13,14 +13,14 @@
 
 <f:section name="content">
 	<div class="js-in2bemail-new">
-		<f:form enctype="multipart/form-data" action="create" name="mailing" object="{mailing}">
+		<f:form enctype="multipart/form-data" action="create" name="mailing" class="form-horizontal" object="{mailing}">
 			<f:render partial="Backend/Create/Context" arguments="{_all}"/>
 
 			<f:render partial="Backend/Create/Groups" arguments="{_all}"/>
 
 			<f:render partial="Backend/Create/Mailing" arguments="{_all}"/>
 
-			<f:form.submit class="js-in2bemail-create-mailing">Submit</f:form.submit>
+			<f:form.submit class="js-in2bemail-create-mailing btn btn-default" value="Submit" />
 		</f:form>
 	</div>
 </f:section>

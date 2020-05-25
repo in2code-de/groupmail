@@ -10,20 +10,12 @@
 
 	<fieldset class="form-section">
 		<div class="form-group">
-			<div class="formengine-field-item">
-
-				<div class="form-control-wrap">
-					<div class="form-wizards-wrap">
-						<div class="form-wizards-element">
-							<div class="input-group">
-								<f:form.select name="context" property="context" class="js-in2bemail-context">
-									<f:form.select.option value="fe">Frontend</f:form.select.option>
-									<f:form.select.option value="be">Backend</f:form.select.option>
-								</f:form.select>
-							</div>
-						</div>
-					</div>
-				</div>
+			<label for="context" class="col-sm-1 control-label">Context</label>
+			<div class="col-sm-5">
+				<f:form.select name="context" property="context" class="js-in2bemail-context form-control">
+					<f:form.select.option value="fe">Frontend</f:form.select.option>
+					<f:form.select.option value="be">Backend</f:form.select.option>
+				</f:form.select>
 			</div>
 		</div>
 	</fieldset>

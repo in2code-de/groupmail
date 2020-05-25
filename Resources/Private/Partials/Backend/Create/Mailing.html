@@ -4,85 +4,38 @@
 	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
 <div class="panel panel-default">
 	<div class="panel-heading">Mailing</div>
+
 	<fieldset class="form-section">
+
 		<div class="form-group">
-			<div class="formengine-field-item">
-				<div class="form-control-wrap">
-					<div class="form-wizards-wrap">
-						<div class="form-wizards-element">
-							<div class="input-group">
-								<label for="subject">
-									Sender Name
-								</label>
-								<f:form.textfield name="senderName" property="senderName"/>
-							</div>
-						</div>
-					</div>
-				</div>
+			<label for="senderName" class="col-sm-1 control-label">Sender Name</label>
+			<div class="col-sm-5">
+				<f:form.textfield name="senderName" class="form-control" property="senderName"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="formengine-field-item">
-				<div class="form-control-wrap">
-					<div class="form-wizards-wrap">
-						<div class="form-wizards-element">
-							<div class="input-group">
-								<label for="subject">
-									Sender Mail
-								</label>
-								<f:form.textfield name="senderMail" property="senderMail"/>
-							</div>
-						</div>
-					</div>
-				</div>
+			<label for="senderMail" class="col-sm-1 control-label">Sender Mail</label>
+			<div class="col-sm-5">
+				<f:form.textfield name="senderMail" class="form-control" property="senderMail"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="subject" class="col-sm-1 control-label">Subject</label>
+			<div class="col-sm-5">
+				<f:form.textfield name="subject" class="form-control" property="subject"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="formengine-field-item">
-				<div class="form-control-wrap">
-					<div class="form-wizards-wrap">
-						<div class="form-wizards-element">
-							<div class="input-group">
-								<label for="subject">
-									Subject
-								</label>
-								<f:form.textfield name="subject" property="subject"/>
-							</div>
-						</div>
-					</div>
-				</div>
+			<label for="bodytext" class="col-sm-1 control-label">Bodytext</label>
+			<div class="col-sm-5">
+				<f:form.textarea cols="70" rows="15" class="form-control" name="bodytext" property="bodytext"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="formengine-field-item">
-				<div class="form-control-wrap">
-					<div class="form-wizards-wrap">
-						<div class="form-wizards-element">
-							<div class="input-group">
-								<label for="subject">
-									Bodytext
-								</label>
-								<f:form.textarea cols="70" rows="15" name="bodytext" property="bodytext" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="formengine-field-item">
-				<div class="form-control-wrap">
-					<div class="form-wizards-wrap">
-						<div class="form-wizards-element">
-							<div class="input-group">
-								<label for="files">
-									Dateien
-								</label>
-								<f:form.upload name="files" multiple="multiple" />
-							</div>
-						</div>
-					</div>
-				</div>
+			<label for="files" class="col-sm-1 control-label">Dateien</label>
+			<div class="col-sm-5">
+				<f:form.upload name="files" class="form-control" multiple="multiple"/>
 			</div>
 		</div>
 	</fieldset>
