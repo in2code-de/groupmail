@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace In2code\In2bemail\Service;
@@ -104,7 +105,7 @@ class AttachmentService extends AbstractService
             ->where(
                 $this->queryBuilder->expr()->eq('uid', $this->queryBuilder->createNamedParameter($mailingUid))
             )
-            ->set('attachments', count($files));
+            ->set('attachments', count($files))->execute();
 
         if (count($dataHandler->errorLog) === 0) {
             return true;
