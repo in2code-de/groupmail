@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:switch expression="{mailing.context}">
+	<f:case value="fe">
+		<f:variable name="groups" value="{mailing.feGroups}"/>
+	</f:case>
+	<f:case value="be">
+		<f:variable name="groups" value="{mailing.beGroups}"/>
+	</f:case>
+</f:switch>
+
+<f:for each="{groups}" as="group" iteration="i">
+	<f:if condition="{i.isLast}">
+		<f:then>
+			{group.title}
+		</f:then>
+		<f:else>
+			{group.title},
+		</f:else>
+	</f:if>
+</f:for>
+</html>

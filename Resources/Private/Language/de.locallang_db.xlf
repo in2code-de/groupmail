@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-04-29T14:45:12Z"
+          product-name="groupmailer">
+        <header/>
+        <body>
+            <trans-unit id="tx_groupmailer_domain_model_mailing">
+                <source>Mailing</source>
+                <target>Mailing</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.be_groups">
+                <source>Backend Usergroups</source>
+                <target>Backend Usergruppen</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.fe_groups">
+                <source>Frontend Usergroups</source>
+                <target>Frontend Usergruppen</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.subject">
+                <source>Subject</source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.bodytext">
+                <source>Bodytext</source>
+                <target>E-Mail Inhalt</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.mail_format">
+                <source>Mail Format</source>
+                <target>Email Format</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.mail_format.both">
+                <source>HTML and Plain</source>
+                <target>HTML und Text</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.mail_format.html">
+                <source>HTML</source>
+                <target>HTML</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.showinviews.plain">
+                <source>Plain</source>
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.sender">
+                <source>Sender</source>
+                <target>Absender</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.sender_mail">
+                <source>E-Mail</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.sender_name">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.attachments">
+                <source>Attachments</source>
+                <target>Anhänge</target>
+            </trans-unit>
+
+            <trans-unit id="tx_groupmailer_domain_model_mailing.mail_queue_generated">
+                <source>Mail Queue generated</source>
+                <target>Mail Warteschlange erstellt</target>
+            </trans-unit>
+
+            <trans-unit id="tx_groupmailer_domain_model_mailing.workflow_state">
+                <source>Workflow State</source>
+                <target>Workflow Status</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.workflow_state.1">
+                <source>Draft</source>
+                <target>Entwurf</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.workflow_state.2">
+                <source>Review</source>
+                <target>Überprüfen</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.workflow_state.3">
+                <source>Approved</source>
+                <target>Freigegeben</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailing.workflow_state.4">
+                <source>Rejected</source>
+                <target>Abgewiesen</target>
+            </trans-unit>
+
+            <trans-unit id="tx_groupmailer_domain_model_mailqueue">
+                <source>Queue Entry</source>
+                <target>Eintrag Warteschlange</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailqueue.mailing">
+                <source>Mailing</source>
+                <target>Mailing</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailqueue.be_user">
+                <source>Backend User</source>
+                <target>Backend User</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailqueue.fe_user">
+                <source>Frontend User</source>
+                <target>Frontend User</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailqueue.sent">
+                <source>Sent</source>
+                <target>Gesendet</target>
+            </trans-unit>
+            <trans-unit id="tx_groupmailer_domain_model_mailqueue.error">
+                <source>Error</source>
+                <target>Error</target>
+            </trans-unit>
+
+            <trans-unit id="context">
+                <source>Context</source>
+                <target>Context</target>
+            </trans-unit>
+            <trans-unit id="context.backend">
+                <source>Backend</source>
+                <target>Backend</target>
+            </trans-unit>
+            <trans-unit id="context.frontend">
+                <source>Frontend</source>
+                <target>Frontend</target>
+            </trans-unit>
+
+            <trans-unit id="modal.delete-warning.title">
+                <source>Delete Record</source>
+                <target>Datensatz löschen</target>
+            </trans-unit>
+            <trans-unit id="modal.delete-warning">
+                <source>Are you sure you want to delete this record?</source>
+                <target>Sind sie sicher das sie diesen Datensatz löschen wollen?</target>
+            </trans-unit>
+            <trans-unit id="modal.delete-warning.yes">
+                <source>Yes, delete Record</source>
+                <target>Ja, Datensatz löschen</target>
+            </trans-unit>
+            <trans-unit id="modal.delete-warning.cancel">
+                <source>Cancel</source>
+                <target>Abbrechen</target>
+            </trans-unit>
+
+            <trans-unit id="legend">
+                <source>Legend</source>
+                <target>Legende</target>
+            </trans-unit>
+            <trans-unit id="legend.approved.title">
+                <source>Approved</source>
+                <target>Freigegeben</target>
+            </trans-unit>
+            <trans-unit id="legend.approved.desciption">
+                <source>is processed on the next run of the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange abgearbeitet</target>
+            </trans-unit>
+            <trans-unit id="legend.review.title">
+                <source>Review</source>
+                <target>Überprüfung</target>
+            </trans-unit>
+            <trans-unit id="legend.review.description">
+                <source>will be ignored from the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange ignoriert</target>
+            </trans-unit>
+            <trans-unit id="legend.draft.title">
+                <source>Draft</source>
+                <target>Entwurf</target>
+            </trans-unit>
+            <trans-unit id="legend.draft.description">
+                <source>will be ignored from the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange ignoriert</target>
+            </trans-unit>
+            <trans-unit id="legend.rejected.title">
+                <source>Rejected</source>
+                <target>Abgelehnt</target>
+            </trans-unit>
+            <trans-unit id="legend.rejected.description">
+                <source>will be closed on the next run of the queue generation</source>
+                <target>Wird beim nächsten Erstellen der Mail Warteschlange geschlossen</target>
+            </trans-unit>
+
+            <trans-unit id="mailing-administration">
+                <source>Mailing administration</source>
+                <target>Mailing Administration</target>
+            </trans-unit>
+            <trans-unit id="active-mailings">
+                <source>Active Mailings</source>
+                <target>Aktive Mailings</target>
+            </trans-unit>
+            <trans-unit id="closed-mailings">
+                <source>Closed Mailings</source>
+                <target>Geschlossene Mailings</target>
+            </trans-unit>
+
+            <trans-unit id="table.headline.creation-date">
+                <source>creation date</source>
+                <target>Erstellungsdatum</target>
+            </trans-unit>
+            <trans-unit id="table.headline.last-update">
+                <source>last update</source>
+                <target>Letztes Update</target>
+            </trans-unit>
+            <trans-unit id="table.headline.subject">
+                <source>subject</source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="table.headline.context">
+                <source>context</source>
+                <target>Context</target>
+            </trans-unit>
+            <trans-unit id="table.headline.groups">
+                <source>groups</source>
+                <target>Gruppen</target>
+            </trans-unit>
+            <trans-unit id="table.headline.receiver">
+                <source>Receiver</source>
+                <target>Empänger</target>
+            </trans-unit>
+            <trans-unit id="table.headline.status">
+                <source>status</source>
+                <target>Status</target>
+            </trans-unit>
+
+            <trans-unit id="status.rejected">
+                <source>rejected</source>
+                <target>abgelehnt</target>
+            </trans-unit>
+            <trans-unit id="status.generated">
+                <source>queue generated</source>
+                <target>Warteschlange erstellt</target>
+            </trans-unit>
+            <trans-unit id="status.pending">
+                <source>pending</source>
+                <target>ausstehend</target>
+            </trans-unit>
+            <trans-unit id="status.completed">
+                <source>completed</source>
+                <target>abgeschlossen</target>
+            </trans-unit>
+
+            <trans-unit id="quick-options.approve">
+                <source>approve mailing</source>
+                <target>Mailing freigeben</target>
+            </trans-unit>
+            <trans-unit id="quick-options.reject">
+                <source>reject mailing</source>
+                <target>Mailing ablehnen</target>
+            </trans-unit>
+            <trans-unit id="quick-options.edit">
+                <source>edit mailing</source>
+                <target>Mailing bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="quick-options.hide">
+                <source>hide / unhide mailing</source>
+                <target>Mailing aktivieren / deaktivieren</target>
+            </trans-unit>
+            <trans-unit id="quick-options.delete">
+                <source>delete mailing</source>
+                <target>Mailing löschen</target>
+            </trans-unit>
+            <trans-unit id="errors-title">
+                <source>Some messages of this mailing could't not be sent.</source>
+                <target>Es konnten Nachrichten aus diesem Mailing nicht versendet werden.</target>
+            </trans-unit>
+            <trans-unit id="from">
+                <source>from</source>
+                <target>von</target>
+            </trans-unit>
+            <trans-unit id="mailings-processed">
+                <source>Mailings processed</source>
+                <target>Mailings verarbeitet</target>
+            </trans-unit>
+            <trans-unit id="modal.error.title">
+                <source>Error while sending messages</source>
+                <target>Fehler beim Versenden von Nachrichten</target>
+            </trans-unit>
+            <trans-unit id="modal.error.message">
+                <source>No message could be sent to the following users</source>
+                <target>Den folgenden Benutzern konnten keine Nachrichten gesendet werden</target>
+            </trans-unit>
+            <trans-unit id="modal.error.message.additional-information">
+                <source>This could be because the user has no valid email address.</source>
+                <target>Das könnte daran liegen, dass dem Benutzer keine Email Adresse zugewiesen ist.</target>
+            </trans-unit>
+
+            <trans-unit id="module.new">
+                <source>New Mailing</source>
+                <target>Neues Mailing</target>
+            </trans-unit>
+            <trans-unit id="module.administration">
+                <source>Administration</source>
+                <target>Administration</target>
+            </trans-unit>
+
+            <trans-unit id="message.mailing-created.title">
+                <source>Mailing created</source>
+                <target>Neues Mailing erstellt</target>
+            </trans-unit>
+            <trans-unit id="message.mailing-created.message">
+                <source>a new mailing was created</source>
+                <target>ein neues Mailing wurde erstellt</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing">
+                <source>Create new Mailing</source>
+                <target>Neues Mailing erstellen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.select-context">
+                <source>Select mailing type</source>
+                <target>Mailing Typ auswählen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.context">
+                <source>Context</source>
+                <target>Context</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.select-groups">
+                <source>Select Groups</source>
+                <target>Gruppen auswählen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.selected-groups">
+                <source>selected Groups</source>
+                <target>gewählte Gruppen</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.available-groups">
+                <source>available Groups</source>
+                <target>verfügbare Gruppen</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.mailing">
+                <source>Mailing</source>
+                <target>Mailing</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.sender-name">
+                <source>Sender Name</source>
+                <target>Absender Name</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.sender-mail">
+                <source>Sender Email</source>
+                <target>Absender Mail</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.subject">
+                <source>Subject</source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.bodytext">
+                <source>Bodytext</source>
+                <target>E-Mail Inhalt</target>
+            </trans-unit>
+            <trans-unit id="create-mailing.attachments">
+                <source>Attachments</source>
+                <target>Anhänge</target>
+            </trans-unit>
+
+            <trans-unit id="create-mailing.create">
+                <source>Create</source>
+                <target>Erstellen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

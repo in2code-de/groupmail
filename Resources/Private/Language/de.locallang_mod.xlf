@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-04-29T14:43:34Z"
+          product-name="groupmailer">
+        <header/>
+        <body>
+            <trans-unit id="mlang_labels_tabdescr">
+                <source>This is the main administration module for the mailing (groupmailer) extension.</source>
+                <target>Dies ist das Administrationsmodul für die Mailing Extension (groupmailer).</target>
+            </trans-unit>
+            <trans-unit id="mlang_tabs_tab">
+                <source>Mailing Administration</source>
+                <target>Mailing Administration</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

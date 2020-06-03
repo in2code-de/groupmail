@@ -1,0 +1,143 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:groupmailer="http://typo3.org/ns/In2code/Groupmailer/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="panel panel-default">
+	<div class="panel-heading">
+		2. <f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.select-groups"/>
+	</div>
+	<fieldset class="form-section" style="margin-bottom: 15px;">
+		<f:comment>
+			Frontend Groups:
+		</f:comment>
+		<div class="form-wizards-element js-groupmailer-fe-groups" data-groupmailer-type="side-by-side">
+			<div class="form-multigroup-wrap">
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="feGroups">
+						<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.selected-groups"/>
+					</label>
+					<div class="form-wizards-wrap form-wizards-aside">
+						<div class="form-wizards-element">
+							<f:form.select name="feGroups"
+										   property="feGroups"
+										   multiple="multiple"
+										   options="{feGroups}"
+										   optionValueField="uid"
+										   optionLabelField="title"
+										   title="feGroups"
+										   size="10"
+										   class="form-control tceforms-multiselect js-groupmailer-selected-items groupmailer-select">
+							</f:form.select>
+						</div>
+						<div class="form-wizards-items-aside">
+							<div class="btn-group-vertical">
+								<a href="#" class="btn btn-default js-groupmailer-move-item-begin"
+								   title="Move selected items to top">
+									<core:icon identifier="actions-move-to-top" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-move-item-up"
+								   title="Move selected items upwards">
+									<core:icon identifier="actions-move-up" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-move-item-down"
+								   title="Move selected items downwards">
+									<core:icon identifier="actions-move-down" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-move-item-end"
+								   title="Move selected items to bottom">
+									<core:icon identifier="actions-move-to-bottom" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-remove-item"
+								   title="Remove selected items">
+									<core:icon identifier="actions-selection-delete" size="small"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="availableFeGroups">
+						<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.available-groups"/>
+					</label>
+					<div class="form-wizards-element">
+						<select multiple="multiple" name="availableFeGroups" title="availableGroups"
+								class="form-control tceforms-multiselect js-groupmailer-available-items groupmailer-select" size="10">
+							<f:for each="{feGroups}" as="group">
+								<f:form.select.option value="{group.uid}"
+													  data="{groupmailer-selectable-item:'true'}">{group.title}
+								</f:form.select.option>
+							</f:for>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<f:comment>
+			Backend Groups:
+		</f:comment>
+		<div class="form-wizards-element groupmailer-hide js-groupmailer-be-groups" data-groupmailer-type="side-by-side">
+			<div class="form-multigroup-wrap">
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="beGroups">
+						<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.selected-groups"/>
+					</label>
+					<div class="form-wizards-wrap form-wizards-aside">
+						<div class="form-wizards-element">
+							<f:form.select name="beGroups"
+										   property="beGroups"
+										   options="{beGroups}"
+										   optionValueField="uid"
+										   optionLabelField="title"
+										   multiple="multiple"
+										   title="beGroups"
+										   size="10"
+										   class="form-control tceforms-multiselect js-groupmailer-selected-items groupmailer-select">
+							</f:form.select>
+						</div>
+						<div class="form-wizards-items-aside">
+							<div class="btn-group-vertical">
+								<a href="#" class="btn btn-default js-groupmailer-move-item-begin"
+								   title="Move selected items to top">
+									<core:icon identifier="actions-move-to-top" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-move-item-up"
+								   title="Move selected items upwards">
+									<core:icon identifier="actions-move-up" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-move-item-down"
+								   title="Move selected items downwards">
+									<core:icon identifier="actions-move-down" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-move-item-end"
+								   title="Move selected items to bottom">
+									<core:icon identifier="actions-move-to-bottom" size="small"/>
+								</a>
+								<a href="#" class="btn btn-default js-groupmailer-remove-item"
+								   title="Remove selected items">
+									<core:icon identifier="actions-selection-delete" size="small"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-multigroup-item form-multigroup-element">
+					<label for="availableBeGroups">
+						<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.available-groups"/>
+					</label>
+					<div class="form-wizards-element">
+						<select multiple="multiple" name="availableBeGroups" title="availableBeGroups"
+								class="form-control tceforms-multiselect js-groupmailer-available-items groupmailer-select" size="10">
+							<f:for each="{beGroups}" as="group">
+								<f:form.select.option value="{group.uid}"
+													  data="{groupmailer-selectable-item:'true'}">{group.title}
+								</f:form.select.option>
+							</f:for>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+</html>

@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+	  xmlns:groupmailer="http://typo3.org/ns/In2code/Groupmailer/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Backend/Default"/>
+
+<f:section name="headline">
+	<h1>
+		<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing"/>
+	</h1>
+</f:section>
+
+<f:section name="content">
+	<div class="js-groupmailer-new" data-groupmailer-language="{backendLanguage}">
+		<f:form enctype="multipart/form-data" action="create" name="mailing" class="form-horizontal" object="{mailing}">
+			<f:render partial="Backend/Create/Context" arguments="{_all}"/>
+
+			<f:render partial="Backend/Create/Groups" arguments="{_all}"/>
+
+			<f:render partial="Backend/Create/Mailing" arguments="{_all}"/>
+
+
+			<f:form.submit class="js-groupmailer-create-mailing btn btn-default" value="{f:translate(key:'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.create')}" />
+		</f:form>
+	</div>
+</f:section>
+</html>
