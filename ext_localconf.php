@@ -7,29 +7,29 @@ call_user_func(
         /**
          * Logging
          */
-        $GLOBALS['TYPO3_CONF_VARS']['LOG']['In2code']['In2bemail'] = [
+        $GLOBALS['TYPO3_CONF_VARS']['LOG']['In2code']['Groupmailer'] = [
             'writerConfiguration' => [
                 TYPO3\CMS\Core\Log\LogLevel::INFO => [
                     TYPO3\CMS\Core\Log\Writer\DatabaseWriter::class => [
-                        'logTable' => 'tx_in2bemail_log'
+                        'logTable' => 'tx_groupmailer_log'
                     ]
                 ]
             ]
         ];
 
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][300] =
-            'EXT:in2bemail/Resources/Private/Templates/Email';
+            'EXT:groupmailer/Resources/Private/Templates/Email';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][300] =
-            'EXT:in2bemail/Resources/Private/Layouts/Email';
+            'EXT:groupmailer/Resources/Private/Layouts/Email';
 
         $icons = [
             [
-                'identifier' => 'tx-in2bemail-backend-mail',
-                'source' => 'EXT:in2bemail/Resources/Public/Icons/mail_backend.svg'
+                'identifier' => 'tx-groupmailer-backend-mail',
+                'source' => 'EXT:groupmailer/Resources/Public/Icons/mail_backend.svg'
             ],
             [
-                'identifier' => 'tx-in2bemail-frontend-mail',
-                'source' => 'EXT:in2bemail/Resources/Public/Icons/mail_frontend.svg'
+                'identifier' => 'tx-groupmailer-frontend-mail',
+                'source' => 'EXT:groupmailer/Resources/Public/Icons/mail_frontend.svg'
             ],
         ];
 

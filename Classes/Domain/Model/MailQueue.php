@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Domain\Model;
+namespace In2code\Groupmailer\Domain\Model;
 
-use In2code\In2bemail\Context\Context;
+use In2code\Groupmailer\Context\Context;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUser;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class MailQueue extends AbstractEntity
 {
-    const TABLE = 'tx_in2bemail_domain_model_mailqueue';
+    const TABLE = 'tx_groupmailer_domain_model_mailqueue';
 
     /**
      * @var Mailing|null

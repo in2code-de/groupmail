@@ -4,22 +4,22 @@ services:
     autoconfigure: true
     public: false
 
-  In2code\In2bemail\:
+  In2code\Groupmailer\:
     resource: '../Classes/*'
 
-  In2code\In2bemail\Service\MailService:
+  In2code\Groupmailer\Service\MailService:
     public: true
 
-  In2code\In2bemail\Command\GenerateMailQueueCommand:
+  In2code\Groupmailer\Command\GenerateMailQueueCommand:
     public: true
     tags:
       - name: 'console.command'
-        command: 'in2bemail:generateMailQueue'
+        command: 'groupmailer:generateMailQueue'
         schedulable: true
 
-  In2code\In2bemail\Command\ProcessMailQueueCommand:
+  In2code\Groupmailer\Command\ProcessMailQueueCommand:
     public: true
     tags:
       - name: 'console.command'
-        command: 'in2bemail:processMailQueue'
+        command: 'groupmailer:processMailQueue'
         schedulable: true

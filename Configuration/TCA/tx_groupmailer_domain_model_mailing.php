@@ -1,12 +1,12 @@
 <?php
 
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Workflow\Workflow;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Workflow\Workflow;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE,
+        'title' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE,
         'label' => 'subject',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -18,8 +18,8 @@ return [
         'delete' => 'deleted',
         'type' => 'context',
         'typeicon_classes' => [
-            'fe' => 'tx-in2bemail-frontend-mail',
-            'be' => 'tx-in2bemail-backend-mail',
+            'fe' => 'tx-groupmailer-frontend-mail',
+            'be' => 'tx-groupmailer-backend-mail',
         ],
         'typeicon_column' => 'context',
         'enablecolumns' => [
@@ -33,8 +33,8 @@ return [
         'showRecordFieldList' => 'be_groups,fe_groups,workflow_state,subject,bodytext,mail_format,sender_mail,sender_name,mail_queue_generated,hidden',
     ],
     'types' => [
-        'fe' => ['showitem' => 'context,fe_groups,workflow_state,subject,bodytext,attachments,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
-        'be' => ['showitem' => 'context,be_groups,workflow_state,subject,bodytext,attachments,mail_format,--palette--;LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'fe' => ['showitem' => 'context,fe_groups,workflow_state,subject,bodytext,attachments,mail_format,--palette--;LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
+        'be' => ['showitem' => 'context,be_groups,workflow_state,subject,bodytext,attachments,mail_format,--palette--;LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender;sender,mail_queue_generated,hidden'],
     ],
     'palettes' => [
         'sender' => [
@@ -45,24 +45,24 @@ return [
     'columns' => [
         'context' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.frontend', 'fe'],
-                    ['LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.backend', 'be'],
+                    ['LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context.frontend', 'fe'],
+                    ['LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context.backend', 'be'],
                 ]
             ]
         ],
         'be_groups' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.be_groups',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.be_groups',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'be_groups',
-                'MM' => 'tx_in2bemail_mailing_be_groups_mm',
+                'MM' => 'tx_groupmailer_mailing_be_groups_mm',
                 'foreign_table_where' => 'ORDER BY title ASC',
                 'size' => 5,
                 'minitems' => 1,
@@ -70,12 +70,12 @@ return [
         ],
         'fe_groups' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.fe_groups',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.fe_groups',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'fe_groups',
-                'MM' => 'tx_in2bemail_mailing_fe_groups_mm',
+                'MM' => 'tx_groupmailer_mailing_fe_groups_mm',
                 'foreign_table_where' => 'ORDER BY title ASC',
                 'size' => 5,
                 'minitems' => 1,
@@ -83,25 +83,25 @@ return [
         ],
         'workflow_state' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_DRAFT,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_DRAFT,
                         Workflow::STATE_DRAFT
                     ],
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_REVIEW,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_REVIEW,
                         Workflow::STATE_REVIEW
                     ],
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_APPROVED,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_APPROVED,
                         Workflow::STATE_APPROVED
                     ],
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_REJECTED,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.workflow_state.' . Workflow::STATE_REJECTED,
                         Workflow::STATE_REJECTED
                     ],
                 ],
@@ -110,7 +110,7 @@ return [
         ],
         'subject' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.subject',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.subject',
             'config' => [
                 'type' => 'input',
                 'size' => 40,
@@ -120,7 +120,7 @@ return [
         ],
         'bodytext' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.bodytext',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.bodytext',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -130,26 +130,26 @@ return [
         ],
         'attachments' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.attachments',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.attachments',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('attachments'),
         ],
         'mail_format' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_format',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_format',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_format.' . FluidEmail::FORMAT_BOTH,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_format.' . FluidEmail::FORMAT_BOTH,
                         FluidEmail::FORMAT_BOTH
                     ],
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_format.' . FluidEmail::FORMAT_HTML,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_format.' . FluidEmail::FORMAT_HTML,
                         FluidEmail::FORMAT_HTML
                     ],
                     [
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.showinviews.' . FluidEmail::FORMAT_PLAIN,
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.showinviews.' . FluidEmail::FORMAT_PLAIN,
                         FluidEmail::FORMAT_PLAIN
                     ],
                 ],
@@ -158,7 +158,7 @@ return [
         ],
         'sender_mail' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender_mail',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender_mail',
             'config' => [
                 'type' => 'input',
                 'size' => 40,
@@ -168,7 +168,7 @@ return [
         ],
         'sender_name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender_name',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.sender_name',
             'config' => [
                 'type' => 'input',
                 'size' => 40,
@@ -178,7 +178,7 @@ return [
         ],
         'mail_queue_generated' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_queue_generated',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.mail_queue_generated',
             'config' => [
                 'type' => 'check',
                 'readOnly' => true
@@ -186,7 +186,7 @@ return [
         ],
         'rejected' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.rejected',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . Mailing::TABLE . '.rejected',
             'config' => [
                 'type' => 'check',
                 'readOnly' => true

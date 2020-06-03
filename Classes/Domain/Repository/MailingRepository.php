@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Domain\Repository;
+namespace In2code\Groupmailer\Domain\Repository;
 
-use In2code\In2bemail\Workflow\Workflow;
+use In2code\Groupmailer\Workflow\Workflow;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 class MailingRepository extends AbstractRepository

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Domain\Model;
+namespace In2code\Groupmailer\Domain\Model;
 
-use In2code\In2bemail\Context\Context;
-use In2code\In2bemail\Workflow\Workflow;
+use In2code\Groupmailer\Context\Context;
+use In2code\Groupmailer\Workflow\Workflow;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup;
@@ -14,7 +14,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Mailing extends AbstractEntity
 {
-    const TABLE = 'tx_in2bemail_domain_model_mailing';
+    const TABLE = 'tx_groupmailer_domain_model_mailing';
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\BackendUserGroup>

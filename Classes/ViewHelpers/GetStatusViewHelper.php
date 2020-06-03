@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\ViewHelpers;
+namespace In2code\Groupmailer\ViewHelpers;
 
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Domain\Repository\MailQueueRepository;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Domain\Repository\MailQueueRepository;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class GetStatusViewHelper extends AbstractViewHelper

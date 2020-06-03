@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\ViewHelpers\Link;
+namespace In2code\Groupmailer\ViewHelpers\Link;
 
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Database\ConnectionPool;

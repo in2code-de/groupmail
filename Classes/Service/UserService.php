@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Service;
+namespace In2code\Groupmailer\Service;
 
-use In2code\In2bemail\Context\Context;
+use In2code\Groupmailer\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

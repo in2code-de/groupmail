@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Service;
+namespace In2code\Groupmailer\Service;
 
-use In2code\In2bemail\Context\Context;
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Domain\Model\MailQueue;
-use In2code\In2bemail\Domain\Repository\MailingRepository;
-use In2code\In2bemail\Domain\Repository\MailQueueRepository;
-use In2code\In2bemail\Utility\ConfigurationUtility;
+use In2code\Groupmailer\Context\Context;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Domain\Model\MailQueue;
+use In2code\Groupmailer\Domain\Repository\MailingRepository;
+use In2code\Groupmailer\Domain\Repository\MailQueueRepository;
+use In2code\Groupmailer\Utility\ConfigurationUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 

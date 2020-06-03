@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Utility;
+namespace In2code\Groupmailer\Utility;
 
 class ConfigurationUtility
 {
@@ -10,7 +10,7 @@ class ConfigurationUtility
      */
     protected static function getConfiguration(): array
     {
-        return $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['in2bemail'];
+        return $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['groupmailer'];
     }
 
     /**

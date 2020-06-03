@@ -1,17 +1,17 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
-	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+	  xmlns:groupmailer="http://typo3.org/ns/In2code/Groupmailer/ViewHelpers" data-namespace-typo3-fluid="true">
 <div class="panel panel-default">
 	<div class="panel-heading">
-		3. <f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.mailing"/>
+		3. <f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.mailing"/>
 	</div>
 
 	<fieldset class="form-section">
 
 		<div class="form-group">
 			<label for="senderName" class="col-sm-1 control-label">
-				<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.sender-name"/>
+				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.sender-name"/>
 			</label>
 			<div class="col-sm-5">
 				<f:form.textfield name="senderName" class="form-control" property="senderName"/>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="form-group">
 			<label for="senderMail" class="col-sm-1 control-label">
-				<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.sender-mail"/>
+				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.sender-mail"/>
 			</label>
 			<div class="col-sm-5">
 				<f:form.textfield name="senderMail" class="form-control" property="senderMail"/>
@@ -28,7 +28,7 @@
 
 		<div class="form-group">
 			<label for="subject" class="col-sm-1 control-label">
-				<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.subject"/>
+				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.subject"/>
 			</label>
 			<div class="col-sm-5">
 				<f:form.textfield name="subject" class="form-control" property="subject"/>
@@ -36,7 +36,7 @@
 		</div>
 		<div class="form-group">
 			<label for="bodytext" class="col-sm-1 control-label">
-				<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.bodytext"/>
+				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.bodytext"/>
 			</label>
 			<div class="col-sm-5">
 				<f:form.textarea cols="70" rows="15" class="form-control" name="bodytext" property="bodytext"/>
@@ -44,7 +44,7 @@
 		</div>
 		<div class="form-group">
 			<label for="files" class="col-sm-1 control-label">
-				<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.attachments"/>
+				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.attachments"/>
 			</label>
 			<div class="col-sm-5">
 				<f:form.upload name="files" class="form-control" multiple="multiple"/>

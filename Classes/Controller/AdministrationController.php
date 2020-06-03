@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Controller;
+namespace In2code\Groupmailer\Controller;
 
-use In2code\In2bemail\Context\Context;
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Domain\Repository\MailingRepository;
-use In2code\In2bemail\Service\AttachmentService;
+use In2code\Groupmailer\Context\Context;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Domain\Repository\MailingRepository;
+use In2code\Groupmailer\Service\AttachmentService;
 use TYPO3\CMS\Backend\Template\Components\Menu\Menu;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -126,10 +126,10 @@ class AdministrationController extends ActionController
 
         $this->addFlashMessage(
             LocalizationUtility::translate(
-                'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:message.mailing-created.message'
+                'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:message.mailing-created.message'
             ),
             LocalizationUtility::translate(
-                'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:message.mailing-created.title'
+                'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:message.mailing-created.title'
             ),
             FlashMessage::OK
         );
@@ -176,7 +176,7 @@ class AdministrationController extends ActionController
         $uriBuilder->setRequest($this->request);
 
         $menu = $this->view->getModuleTemplate()->getDocHeaderComponent()->getMenuRegistry()->makeMenu();
-        $menu->setIdentifier('in2bemail');
+        $menu->setIdentifier('groupmailer');
 
         $actions = [
             ['action' => 'index', 'label' => 'administration'],
@@ -187,7 +187,7 @@ class AdministrationController extends ActionController
             $item = $menu->makeMenuItem()
                 ->setTitle(
                     LocalizationUtility::translate(
-                        'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:module.' . $action['label']
+                        'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:module.' . $action['label']
                     )
                 )
                 ->setHref($uriBuilder->reset()->uriFor($action['action'], [], 'Administration'))

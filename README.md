@@ -1,4 +1,4 @@
-# TYPO3 Extension `in2bemail`
+# TYPO3 Extension `groupmailer`
 
 ## Usage
 
@@ -30,7 +30,7 @@
             $fileRepository->findByUid(2)
         ];
 
-        $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\In2code\In2bemail\Service\MailService::class);
+        $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\In2code\Groupmailer\Service\MailService::class);
         $mailService->generateMailing(
             $beGroups,
             'Betreff',
@@ -38,28 +38,28 @@
             'sender@in2code.de',
             'Sender Name',
             \TYPO3\CMS\Core\Mail\FluidEmail::FORMAT_PLAIN,
-            \In2code\In2bemail\Context\Context::BACKEND,
-            \In2code\In2bemail\Workflow\Workflow::STATE_DRAFT,
+            \In2code\Groupmailer\Context\Context::BACKEND,
+            \In2code\Groupmailer\Workflow\Workflow::STATE_DRAFT,
             $attachments
         );
 ```
 
 ### Generate the mail queue 
 
-The mail queue can be generated via the `in2bemail:generateMailQueue` command.
+The mail queue can be generated via the `groupmailer:generateMailQueue` command.
 
 ```
-./vendor/bin/typo3 in2bemail:generateMailQueue
+./vendor/bin/typo3 groupmailer:generateMailQueue
 ```
 
 This can be automated via an Scheduler task.
 
 ### Process the mail queue (sends the actual mails)
 
-The mail queue can be generated via the `in2bemail:processMailQueue` command.
+The mail queue can be generated via the `groupmailer:processMailQueue` command.
 
 ```
-./vendor/bin/typo3 in2bemail:processMailQueue
+./vendor/bin/typo3 groupmailer:processMailQueue
 ```
 
 This can be automated via an Scheduler task.

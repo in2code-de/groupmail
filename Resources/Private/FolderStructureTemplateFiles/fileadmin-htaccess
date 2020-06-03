@@ -1,4 +1,4 @@
-# This file restricts access to the fileadmin/tx_in2bemail directory.
+# This file restricts access to the fileadmin/tx_groupmailer directory.
 # Please do not touch.
 
 # Apache < 2.3

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Service;
+namespace In2code\Groupmailer\Service;
 
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Utility\ConfigurationUtility;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -24,7 +24,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class AttachmentService extends AbstractService
 {
-    const ATTACHMENT_FOLDER = 'tx_in2bemail';
+    const ATTACHMENT_FOLDER = 'tx_groupmailer';
 
     /**
      * @var ResourceFactory
@@ -208,7 +208,7 @@ class AttachmentService extends AbstractService
     {
         $templateFilePath =
             Environment::getExtensionsPath(
-            ) . '/in2bemail/Resources/Private/FolderStructureTemplateFiles/fileadmin-htaccess';
+            ) . '/groupmailer/Resources/Private/FolderStructureTemplateFiles/fileadmin-htaccess';
         $targetFile = Environment::getPublicPath() . '/fileadmin/' . self::ATTACHMENT_FOLDER . '/.htaccess';
 
         if (!copy($templateFilePath, $targetFile)) {

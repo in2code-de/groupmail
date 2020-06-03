@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\ViewHelpers;
+namespace In2code\Groupmailer\ViewHelpers;
 
-use In2code\In2bemail\Workflow\Workflow;
+use In2code\Groupmailer\Workflow\Workflow;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class RenderWorkflowStateViewHelper extends AbstractViewHelper

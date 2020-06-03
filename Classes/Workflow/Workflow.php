@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Workflow;
+namespace In2code\Groupmailer\Workflow;
 
 class Workflow
 {

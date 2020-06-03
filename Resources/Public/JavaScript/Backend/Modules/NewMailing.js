@@ -1,10 +1,10 @@
-define(['TYPO3/CMS/In2bemail/Backend/Modules/SideBySideSelect','TYPO3/CMS/In2bemail/Utility/UiUtility'], function(SideBySideSelect,UiUtility) {
+define(['TYPO3/CMS/Groupmailer/Backend/Modules/SideBySideSelect','TYPO3/CMS/Groupmailer/Utility/UiUtility'], function(SideBySideSelect,UiUtility) {
 	'use strict';
 
 	var NewMailing = {
 		identifiers: {
-			submit: '.js-in2bemail-create-mailing',
-			contextSelect: '.js-in2bemail-context'
+			submit: '.js-groupmailer-create-mailing',
+			contextSelect: '.js-groupmailer-context'
 		}
 	};
 
@@ -23,11 +23,11 @@ define(['TYPO3/CMS/In2bemail/Backend/Modules/SideBySideSelect','TYPO3/CMS/In2bem
 	};
 
 	NewMailing.contextSwitch = function(event) {
-		var beGroupSelection = document.querySelector('.js-in2bemail-be-groups');
-		var feGroupSelection = document.querySelector('.js-in2bemail-fe-groups');
+		var beGroupSelection = document.querySelector('.js-groupmailer-be-groups');
+		var feGroupSelection = document.querySelector('.js-groupmailer-fe-groups');
 
-		UiUtility.toggleClassForElement(beGroupSelection, 'in2bemail-hide');
-		UiUtility.toggleClassForElement(feGroupSelection, 'in2bemail-hide');
+		UiUtility.toggleClassForElement(beGroupSelection, 'groupmailer-hide');
+		UiUtility.toggleClassForElement(feGroupSelection, 'groupmailer-hide');
 	};
 
 	NewMailing.createMailing = function() {

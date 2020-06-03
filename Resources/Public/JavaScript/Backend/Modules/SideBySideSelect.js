@@ -1,13 +1,13 @@
-define(['TYPO3/CMS/In2bemail/Utility/UiUtility', 'TYPO3/CMS/In2bemail/Utility/Loader'], function(UiUtility, Loader) {
+define(['TYPO3/CMS/Groupmailer/Utility/UiUtility', 'TYPO3/CMS/Groupmailer/Utility/Loader'], function(UiUtility, Loader) {
 	'use strict';
 
 	var SideBySideSelect = {
-		sideBySideElements: document.querySelectorAll('[data-in2bemail-type="side-by-side"]'),
+		sideBySideElements: document.querySelectorAll('[data-groupmailer-type="side-by-side"]'),
 
 		identifiers: {
-			container: '[data-in2bemail-type="side-by-side"]',
-			selectedItemsList: '.js-in2bemail-selected-items',
-			availableItemsList: '.js-in2bemail-available-items'
+			container: '[data-groupmailer-type="side-by-side"]',
+			selectedItemsList: '.js-groupmailer-selected-items',
+			availableItemsList: '.js-groupmailer-available-items'
 		}
 	};
 
@@ -25,7 +25,7 @@ define(['TYPO3/CMS/In2bemail/Utility/UiUtility', 'TYPO3/CMS/In2bemail/Utility/Lo
 		var selectedItemsList = sideBySideContainer.querySelector(SideBySideSelect.identifiers.selectedItemsList);
 
 		for (var i = 0; i <= selectedItemsList.options.length-1; i++) {
-			selectedItemsList.options[i].classList.add('in2bemail-hide');
+			selectedItemsList.options[i].classList.add('groupmailer-hide');
 		}
 	};
 
@@ -35,23 +35,23 @@ define(['TYPO3/CMS/In2bemail/Utility/UiUtility', 'TYPO3/CMS/In2bemail/Utility/Lo
 			.addEventListener('click', SideBySideSelect.addItemToSelected);
 
 		// click on the remove item button
-		var deleteButton = sideBySideContainer.querySelector('.js-in2bemail-remove-item');
+		var deleteButton = sideBySideContainer.querySelector('.js-groupmailer-remove-item');
 		deleteButton.addEventListener('click', SideBySideSelect.removeSelectedItems);
 
 		// click on move up button
-		var moveUpButton = sideBySideContainer.querySelector('.js-in2bemail-move-item-up');
+		var moveUpButton = sideBySideContainer.querySelector('.js-groupmailer-move-item-up');
 		moveUpButton.addEventListener('click', SideBySideSelect.moveSelectedItemsUp);
 
 		// click on move down button
-		var moveDownButton = sideBySideContainer.querySelector('.js-in2bemail-move-item-down');
+		var moveDownButton = sideBySideContainer.querySelector('.js-groupmailer-move-item-down');
 		moveDownButton.addEventListener('click', SideBySideSelect.moveSelectedItemsDown);
 
 		// click on move to the end button
-		var moveToEndButton = sideBySideContainer.querySelector('.js-in2bemail-move-item-end');
+		var moveToEndButton = sideBySideContainer.querySelector('.js-groupmailer-move-item-end');
 		moveToEndButton.addEventListener('click', SideBySideSelect.moveSelectedItemsToEnd);
 
 		// click on move to the beginning button
-		var moveToBeginButton = sideBySideContainer.querySelector('.js-in2bemail-move-item-begin');
+		var moveToBeginButton = sideBySideContainer.querySelector('.js-groupmailer-move-item-begin');
 		moveToBeginButton.addEventListener('click', SideBySideSelect.moveSelectedItemsToBegin);
 	};
 
@@ -64,7 +64,7 @@ define(['TYPO3/CMS/In2bemail/Utility/UiUtility', 'TYPO3/CMS/In2bemail/Utility/Lo
 
 		// set all elements to selected
 		for (var i = 0; i < items.options.length; i++) {
-			if (!items.options[i].classList.contains('in2bemail-hide')) {
+			if (!items.options[i].classList.contains('groupmailer-hide')) {
 				items.options[i].selected = true;
 			}
 		}
@@ -78,10 +78,10 @@ define(['TYPO3/CMS/In2bemail/Utility/UiUtility', 'TYPO3/CMS/In2bemail/Utility/Lo
 	SideBySideSelect.addItemToSelected = function(event) {
 		var clickedOption = event.target;
 		var sideBySideContainer = event.target.closest(SideBySideSelect.identifiers.container);
-		if (clickedOption.getAttribute('data-in2bemail-selectable-item') === 'true') {
+		if (clickedOption.getAttribute('data-groupmailer-selectable-item') === 'true') {
 			var targetOption = sideBySideContainer.querySelector(SideBySideSelect.identifiers.selectedItemsList + ' option[value="' + clickedOption.value + '"]');
 			UiUtility.hideElement(clickedOption);
-			UiUtility.toggleClassForElement(targetOption, 'in2bemail-hide');
+			UiUtility.toggleClassForElement(targetOption, 'groupmailer-hide');
 		}
 	};
 
@@ -97,7 +97,7 @@ define(['TYPO3/CMS/In2bemail/Utility/UiUtility', 'TYPO3/CMS/In2bemail/Utility/Lo
 				var optionElement = currentSelection[i];
 				var optionToHide = sideBySideContainer.querySelector(SideBySideSelect.identifiers.selectedItemsList).options[optionElement.index];
 
-				UiUtility.toggleClassForElement(optionToHide, 'in2bemail-hide');
+				UiUtility.toggleClassForElement(optionToHide, 'groupmailer-hide');
 				SideBySideSelect.showItemInAvailableItems(sideBySideContainer, optionElement.value);
 			}
 		}

@@ -1,11 +1,11 @@
-define(['TYPO3/CMS/In2bemail/Backend/Modules/NewMailing'], function(NewMailing) {
+define(['TYPO3/CMS/Groupmailer/Backend/Modules/NewMailing'], function(NewMailing) {
 	'use strict';
 
-	if (document.querySelector('.js-in2bemail-new')) {
+	if (document.querySelector('.js-groupmailer-new')) {
 		NewMailing.initialize();
 	}
 
-	if (document.querySelector('.js-in2bemail-index')) {
+	if (document.querySelector('.js-groupmailer-index')) {
 
 	}
 

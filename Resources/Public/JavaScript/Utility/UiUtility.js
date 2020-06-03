@@ -3,8 +3,8 @@ define([], function() {
 
 	var UiUtility = {
 		identifiers: {
-			loader: '.in2js-in2bemail-loader',
-			loaderActive: '.in2js-in2bemail-loader--active'
+			loader: '.in2js-groupmailer-loader',
+			loaderActive: '.in2js-groupmailer-loader--active'
 		}
 	};
 

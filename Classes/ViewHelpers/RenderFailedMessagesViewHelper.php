@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\ViewHelpers;
+namespace In2code\Groupmailer\ViewHelpers;
 
-use In2code\In2bemail\Context\Context;
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Domain\Model\MailQueue;
-use In2code\In2bemail\Domain\Repository\MailQueueRepository;
+use In2code\Groupmailer\Context\Context;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Domain\Model\MailQueue;
+use In2code\Groupmailer\Domain\Repository\MailQueueRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -39,8 +39,8 @@ class RenderFailedMessagesViewHelper extends AbstractViewHelper
     {
         $mailing = $this->arguments['mailing'];
         $content = '';
-        $errorMessage = LocalizationUtility::translate('LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.error.message');
-        $additionalInformation = LocalizationUtility::translate('LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.error.message.additional-information');
+        $errorMessage = LocalizationUtility::translate('LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:modal.error.message');
+        $additionalInformation = LocalizationUtility::translate('LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:modal.error.message.additional-information');
 
         if ($mailing instanceof Mailing) {
             $failed = $this->mailQueueRepository->getFailedMessages($mailing);

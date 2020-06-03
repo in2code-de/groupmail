@@ -1,88 +1,88 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
-	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+	  xmlns:groupmailer="http://typo3.org/ns/In2code/Groupmailer/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <f:layout name="Backend/Default"/>
 
 <f:section name="headline">
 	<h1>
-		<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:mailing-administration"/>
+		<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:mailing-administration"/>
 	</h1>
 </f:section>
 
 <f:section name="content">
-	<div class="js-in2bemail-index">
+	<div class="js-groupmailer-index">
 		<h3>
-			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:active-mailings"/>:
+			<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:active-mailings"/>:
 		</h3>
 		<div class="panel panel-default">
 			<f:render partial="Backend/ActiveMailings" arguments="{mailings:activeMailings}"/>
 		</div>
 
 		<h3>
-			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:closed-mailings"/>:
+			<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:closed-mailings"/>:
 		</h3>
 		<div class="panel panel-default">
 			<f:render partial="Backend/LockedMailings" arguments="{mailings:lockedMailings}"/>
 		</div>
-		<f:be.infobox title="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend')}"
+		<f:be.infobox title="{f:translate(key:'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend')}"
 					  disableIcon="true">
-			<div class="in2bemail-workflow-legend-container">
+			<div class="groupmailer-workflow-legend-container">
 				<div class="row">
 					<div class="col-md-3">
-						<div class="in2bemail-workflow-legend">
-							<span class="in2bemail-circle in2bemail-yellow"></span>
+						<div class="groupmailer-workflow-legend">
+							<span class="groupmailer-circle groupmailer-yellow"></span>
 							<p>
 								<strong>
 									<f:translate
-											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.draft.title"/>:
+											key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.draft.title"/>:
 								</strong>
 								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.draft.description"/>
+										key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.draft.description"/>
 							</p>
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="in2bemail-workflow-legend">
-							<span class="in2bemail-circle in2bemail-blue"></span>
+						<div class="groupmailer-workflow-legend">
+							<span class="groupmailer-circle groupmailer-blue"></span>
 							<p>
 								<strong>
 									<f:translate
-											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.review.title"/>:
+											key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.review.title"/>:
 								</strong>
 								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.review.description"/>
+										key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.review.description"/>
 							</p>
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="in2bemail-workflow-legend">
-							<span class="in2bemail-circle in2bemail-green"></span>
+						<div class="groupmailer-workflow-legend">
+							<span class="groupmailer-circle groupmailer-green"></span>
 							<p>
 								<strong>
 									<f:translate
-											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.approved.title"/>:
+											key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.approved.title"/>:
 								</strong>
 								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.approved.desciption"/>
+										key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.approved.desciption"/>
 							</p>
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="in2bemail-workflow-legend">
-							<span class="in2bemail-circle in2bemail-red"></span>
+						<div class="groupmailer-workflow-legend">
+							<span class="groupmailer-circle groupmailer-red"></span>
 							<p>
 								<strong>
 									<f:translate
-											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.rejected.title"/>:
+											key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.rejected.title"/>:
 								</strong>
 								<br/>
 								<f:translate
-										key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:legend.rejected.description"/>
+										key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:legend.rejected.description"/>
 							</p>
 						</div>
 					</div>

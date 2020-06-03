@@ -1,5 +1,5 @@
 {
-  "name": "in2code/in2bemail",
+  "name": "in2code/groupmailer",
   "description": "",
   "authors": [
     {
@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "In2code\\In2bemail\\": "Classes"
+      "In2code\\Groupmailer\\": "Classes"
     }
   }
 }

@@ -1,4 +1,4 @@
-CREATE TABLE tx_in2bemail_domain_model_mailing
+CREATE TABLE tx_groupmailer_domain_model_mailing
 (
     uid                           int(11)                            NOT NULL auto_increment,
     pid                           int(11)             DEFAULT '0'    NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE tx_in2bemail_domain_model_mailing
     KEY language (l10n_parent, sys_language_uid)
 );
 
-CREATE TABLE tx_in2bemail_domain_model_mailqueue
+CREATE TABLE tx_groupmailer_domain_model_mailqueue
 (
     uid              int(11)                          NOT NULL auto_increment,
     pid              int(11)             DEFAULT '0'  NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE tx_in2bemail_domain_model_mailqueue
     KEY language (l10n_parent, sys_language_uid)
 );
 
-CREATE TABLE tx_in2bemail_log
+CREATE TABLE tx_groupmailer_log
 (
     request_id varchar(13)         DEFAULT ''  NOT NULL,
     time_micro double(16, 4)                   NOT NULL default '0.0000',
@@ -75,7 +75,7 @@ CREATE TABLE tx_in2bemail_log
     KEY request (request_id)
 );
 
-CREATE TABLE tx_in2bemail_mailing_be_groups_mm
+CREATE TABLE tx_groupmailer_mailing_be_groups_mm
 (
     uid_local       int(11) unsigned DEFAULT '0' NOT NULL,
     uid_foreign     int(11) unsigned DEFAULT '0' NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE tx_in2bemail_mailing_be_groups_mm
     KEY uid_foreign (uid_foreign)
 );
 
-CREATE TABLE tx_in2bemail_mailing_fe_groups_mm
+CREATE TABLE tx_groupmailer_mailing_fe_groups_mm
 (
     uid_local       int(11) unsigned DEFAULT '0' NOT NULL,
     uid_foreign     int(11) unsigned DEFAULT '0' NOT NULL,

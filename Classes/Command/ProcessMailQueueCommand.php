@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\Command;
+namespace In2code\Groupmailer\Command;
 
-use In2code\In2bemail\Service\QueueService;
+use In2code\Groupmailer\Service\QueueService;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\Console\Command\Command;

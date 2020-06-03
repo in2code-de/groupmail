@@ -1,11 +1,11 @@
 <?php
 
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Domain\Model\MailQueue;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Domain\Model\MailQueue;
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE,
+        'title' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE,
         'label' => 'mailing',
         'label_alt' => 'be_user, fe_user',
         'label_alt_force' => 1,
@@ -19,8 +19,8 @@ return [
         'delete' => 'deleted',
         'type' => 'context',
         'typeicon_classes' => [
-            'fe' => 'tx-in2bemail-frontend-mail',
-            'be' => 'tx-in2bemail-backend-mail',
+            'fe' => 'tx-groupmailer-frontend-mail',
+            'be' => 'tx-groupmailer-backend-mail',
         ],
         'typeicon_column' => 'context',
         'enablecolumns' => [
@@ -40,19 +40,19 @@ return [
     'columns' => [
         'context' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.frontend', 'fe'],
-                    ['LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.backend', 'be'],
+                    ['LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context.frontend', 'fe'],
+                    ['LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context.backend', 'be'],
                 ]
             ]
         ],
         'mailing' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.mailing',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.mailing',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -66,7 +66,7 @@ return [
         ],
         'be_user' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.be_user',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.be_user',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -79,7 +79,7 @@ return [
         ],
         'fe_user' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.fe_user',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.fe_user',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -92,7 +92,7 @@ return [
         ],
         'error' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.error',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.error',
             'config' => [
                 'type' => 'check',
                 'readOnly' => true
@@ -100,7 +100,7 @@ return [
         ],
         'sent' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.sent',
+            'label' => 'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:' . MailQueue::TABLE . '.sent',
             'config' => [
                 'type' => 'check',
                 'readOnly' => true

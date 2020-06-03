@@ -1,6 +1,6 @@
 <?php
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'in2bemail',
+    'title' => 'groupmailer',
     'description' => '',
     'category' => 'services',
     'state' => 'stable',

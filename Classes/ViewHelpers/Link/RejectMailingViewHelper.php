@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace In2code\In2bemail\ViewHelpers\Link;
+namespace In2code\Groupmailer\ViewHelpers\Link;
 
-use In2code\In2bemail\Domain\Model\Mailing;
-use In2code\In2bemail\Workflow\Workflow;
+use In2code\Groupmailer\Domain\Model\Mailing;
+use In2code\Groupmailer\Workflow\Workflow;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;

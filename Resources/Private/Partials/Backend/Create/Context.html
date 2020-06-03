@@ -1,21 +1,21 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
-	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+	  xmlns:groupmailer="http://typo3.org/ns/In2code/Groupmailer/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		1. <f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.select-context"/>
+		1. <f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.select-context"/>
 	</div>
 
 	<fieldset class="form-section">
 		<div class="form-group">
 			<label for="context" class="col-sm-1 control-label">
 				<f:translate
-						key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:create-mailing.context"/>
+						key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.context"/>
 			</label>
 			<div class="col-sm-5">
-				<f:form.select name="context" property="context" class="js-in2bemail-context form-control">
+				<f:form.select name="context" property="context" class="js-groupmailer-context form-control">
 					<f:form.select.option value="fe">Frontend</f:form.select.option>
 					<f:form.select.option value="be">Backend</f:form.select.option>
 				</f:form.select>

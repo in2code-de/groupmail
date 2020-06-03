@@ -1,7 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	  xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
 	  xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
-	  xmlns:in2bemail="http://typo3.org/ns/In2code/In2bemail/ViewHelpers" data-namespace-typo3-fluid="true">
+	  xmlns:groupmailer="http://typo3.org/ns/In2code/Groupmailer/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <script>
 	document.addEventListener("DOMContentLoaded", function(event) {
@@ -9,7 +9,7 @@
 		pagination.style.display = 'none';
 
 
-		document.querySelector('.in2bemail-js-pagination').appendChild(pagination);
+		document.querySelector('.groupmailer-js-pagination').appendChild(pagination);
 		pagination.style.display = 'block';
 	});
 
@@ -38,35 +38,35 @@
 	<tr style="height: 45px;">
 		<th width="150">
 			<f:translate
-					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.creation-date"/>
+					key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.creation-date"/>
 		</th>
 		<th width="150">
 			<f:translate
-					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.last-update"/>
+					key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.last-update"/>
 		</th>
 		<th>
 			<f:translate
-					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.subject"/>
+					key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.subject"/>
 		</th>
 		<th>
 			<f:translate
-					key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.context"/>
+					key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.context"/>
 		</th>
 		<th>
-			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.groups"/>
+			<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.groups"/>
 		</th>
 		<th>
-			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.receiver"/>
+			<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.receiver"/>
 		</th>
 		<th width="200">
-			<f:translate key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:table.headline.status"/>
+			<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:table.headline.status"/>
 		</th>
 	</tr>
 	</thead>
 	<tbody>
 	<f:be.widget.paginate objects="{mailings}" as="paginatedMailings" configuration="{itemsPerPage: 10, insertAbove: 0, insertBelow: 1, recordsLabel: 'Mailings'}">
 		<f:for each="{paginatedMailings}" as="mailing">
-			<f:variable name="status" value="{in2bemail:getStatus(mailing: '{mailing}')}"/>
+			<f:variable name="status" value="{groupmailer:getStatus(mailing: '{mailing}')}"/>
 
 			<f:if condition="{mailing.rejected}">
 				<f:then>
@@ -88,20 +88,20 @@
 					<f:switch expression="{mailing.context}">
 						<f:case value="fe">
 							<f:translate
-									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.frontend"/>
+									key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context.frontend"/>
 						</f:case>
 						<f:case value="be">
 							<f:translate
-									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:context.backend"/>
+									key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:context.backend"/>
 						</f:case>
 					</f:switch>
 				</td>
 				<td>
 					<f:render partial="Backend/GroupList" arguments="{mailing:mailing}"/>
 					<f:if condition="{status.failed}">
-						<f:variable name="failed" value="{in2bemail:renderFailedMessages(mailing: '{mailing}')}"/>
-						<f:variable name="message" value="{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:errors-title')}" />
-						<a href="javascript:openModal('{f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:modal.error.title')}','{failed}')"
+						<f:variable name="failed" value="{groupmailer:renderFailedMessages(mailing: '{mailing}')}"/>
+						<f:variable name="message" value="{f:translate(key:'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:errors-title')}" />
+						<a href="javascript:openModal('{f:translate(key:'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:modal.error.title')}','{failed}')"
 						   title="{message}">
 							<core:icon identifier="status-dialog-warning" size="small"/>
 						</a>
@@ -114,22 +114,22 @@
 					<f:if condition="{mailing.rejected}">
 						<f:then>
 							<f:translate
-									key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.rejected"/>
+									key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:status.rejected"/>
 						</f:then>
 						<f:else>
 							<f:if condition="{status.percentageDone} == 100">
 								<f:then>
 									<f:translate
-											key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.completed"/>
+											key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:status.completed"/>
 								</f:then>
 								<f:else>
 									<f:if condition="{status.notSent} == {status.count}">
 										<f:then>
 											<f:translate
-													key="LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:status.pending"/>
+													key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:status.pending"/>
 										</f:then>
 										<f:else>
-											<f:variable name="progressTitle" value="{status.count - status.notSent} {f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:from')} {status.count} {f:translate(key:'LLL:EXT:in2bemail/Resources/Private/Language/locallang_db.xlf:mailings-processed')}"/>
+											<f:variable name="progressTitle" value="{status.count - status.notSent} {f:translate(key:'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:from')} {status.count} {f:translate(key:'LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:mailings-processed')}"/>
 											<div class="progress" style="margin-bottom: 0;"
 												 title="{progressTitle}">
 												<div class="progress-bar" role="progressbar"
@@ -152,7 +152,7 @@
 	<tfoot>
 		<tr>
 			<td colspan="7">
-				<div class="in2bemail-js-pagination"></div>
+				<div class="groupmailer-js-pagination"></div>
 			</td>
 		</tr>
 	</tfoot>
