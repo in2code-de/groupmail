@@ -6,6 +6,8 @@ namespace In2code\In2bemail\Service;
 use In2code\In2bemail\Domain\Model\Mailing;
 use In2code\In2bemail\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Resource\Exception\ExistingTargetFolderException;
 use TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException;
@@ -38,11 +40,18 @@ class AttachmentService extends AbstractService
      */
     protected $fileRepository;
 
+    /**
+     * @var QueryBuilder
+     */
+    protected $queryBuilder;
+
     public function __construct(ResourceFactory $resourceFactory, FileRepository $fileRepository)
     {
         $this->resourceFactory = $resourceFactory;
         $this->storage = $resourceFactory->getDefaultStorage();
         $this->fileRepository = $fileRepository;
+        $this->queryBuilder =
+            GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(Mailing::TABLE);
     }
 
     /**
@@ -85,14 +94,17 @@ class AttachmentService extends AbstractService
             }
         }
 
-        $data[Mailing::TABLE][$mailingUid] = [
-            'attachments' => count($files)
-        ];
-
         /** @var DataHandler $dataHandler */
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
         $dataHandler->start($data, []);
         $dataHandler->process_datamap();
+
+        $this->queryBuilder
+            ->update(Mailing::TABLE)
+            ->where(
+                $this->queryBuilder->expr()->eq('uid', $this->queryBuilder->createNamedParameter($mailingUid))
+            )
+            ->set('attachments', count($files));
 
         if (count($dataHandler->errorLog) === 0) {
             return true;
