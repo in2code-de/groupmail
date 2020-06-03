@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace In2code\Groupmailer\Controller;
@@ -7,6 +8,7 @@ use In2code\Groupmailer\Context\Context;
 use In2code\Groupmailer\Domain\Model\Mailing;
 use In2code\Groupmailer\Domain\Repository\MailingRepository;
 use In2code\Groupmailer\Service\AttachmentService;
+use In2code\Groupmailer\Utility\ConfigurationUtility;
 use TYPO3\CMS\Backend\Template\Components\Menu\Menu;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -95,6 +97,7 @@ class AdministrationController extends ActionController
                 'beGroups' => $this->backendUserGroupRepository->findAll(),
                 'feGroups' => $this->frontendUserGroupRepository->findAll(),
                 'mailing' => new Mailing(),
+                'senderData' => $this->getSenderData()
             ]
         );
     }
@@ -135,7 +138,29 @@ class AdministrationController extends ActionController
         );
 
         $this->redirect('index');
+    }
 
+    /**
+     * @return array
+     */
+    protected function getSenderData(): array
+    {
+        $beUser = $GLOBALS['BE_USER']->user;
+        $senderData = [];
+
+        if (!empty($beUser['realName'])) {
+            $senderData['senderName'] = $beUser['realName'];
+        } else {
+            $senderData['senderName'] = ConfigurationUtility::getSenderNameFallback();
+        }
+
+        if (!empty($beUser['email'])) {
+            $senderData['senderMail'] = $beUser['email'];
+        } else {
+            $senderData['senderMail'] = ConfigurationUtility::getSenderEmailFallback();
+        }
+
+        return $senderData;
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace In2code\Groupmailer\Utility;
@@ -41,5 +42,21 @@ class ConfigurationUtility
         $extConfiguration = self::getConfiguration();
 
         return (int)$extConfiguration['emailProcessCount'];
+    }
+
+    /**
+     * @return string
+     */
+    public static function getSenderEmailFallback(): string
+    {
+        return $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
+    }
+
+    /**
+     * @return string
+     */
+    public static function getSenderNameFallback(): string
+    {
+        return $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'];
     }
 }

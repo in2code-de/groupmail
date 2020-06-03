@@ -82,11 +82,11 @@ class MailService extends AbstractService
         array $attachments = []
     ) {
         if (empty($senderName)) {
-            $senderName = $this->getSenderNameFallback();
+            $senderName = ConfigurationUtility::getSenderNameFallback();
         }
 
         if (empty($senderEmail)) {
-            $senderEmail = $this->getSenderEmailFallback();
+            $senderEmail = ConfigurationUtility::getSenderEmailFallback();
         }
 
         if (!$this->validateArguments(
@@ -233,24 +233,6 @@ class MailService extends AbstractService
         }
 
         return $valid;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getSenderEmailFallback(): string
-    {
-        $this->logger->debug('set fallback for sender email');
-        return $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
-    }
-
-    /**
-     * @return string
-     */
-    protected function getSenderNameFallback(): string
-    {
-        $this->logger->debug('set fallback for sender name');
-        return $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'];
     }
 
     /**

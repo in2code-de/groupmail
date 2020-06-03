@@ -14,7 +14,7 @@
 				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.sender-name"/>
 			</label>
 			<div class="col-sm-5">
-				<f:form.textfield name="senderName" class="form-control" property="senderName"/>
+				<f:form.textfield name="senderName" value="{senderData.senderName}" class="form-control" property="senderName"/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -22,7 +22,7 @@
 				<f:translate key="LLL:EXT:groupmailer/Resources/Private/Language/locallang_db.xlf:create-mailing.sender-mail"/>
 			</label>
 			<div class="col-sm-5">
-				<f:form.textfield name="senderMail" class="form-control" property="senderMail"/>
+				<f:form.textfield name="senderMail" value="{senderData.senderMail}" class="form-control" property="senderMail"/>
 			</div>
 		</div>
 
