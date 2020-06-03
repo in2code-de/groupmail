@@ -1,7 +1,5 @@
 <?php
 
-use In2code\In2bemail\Controller\AdministrationController;
-
 defined('TYPO3_MODE') or die();
 
 call_user_func(
@@ -12,7 +10,7 @@ call_user_func(
             'administration',
             'bottom',
             [
-                AdministrationController::class => 'index, new, create',
+                In2code\In2bemail\Controller\AdministrationController::class => 'index, new, create',
             ],
             [
                 'access' => 'user,group',

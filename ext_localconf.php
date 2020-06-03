@@ -1,9 +1,5 @@
 <?php
 
-use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
-use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 defined('TYPO3_MODE') or die();
 
 call_user_func(
@@ -37,13 +33,13 @@ call_user_func(
             ],
         ];
 
-        $iconRegistry = GeneralUtility::makeInstance(
-            IconRegistry::class
+        $iconRegistry = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            TYPO3\CMS\Core\Imaging\IconRegistry::class
         );
         foreach ($icons as $icon) {
             $iconRegistry->registerIcon(
                 $icon['identifier'],
-                SvgIconProvider::class,
+                TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
                 ['source' => $icon['source']]
             );
         }

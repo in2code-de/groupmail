@@ -18,12 +18,12 @@ class MailQueue extends AbstractEntity
     protected $mailing = null;
 
     /**
-     * @var BackendUser|null
+     * @var \TYPO3\CMS\Extbase\Domain\Model\BackendUser|null
      */
     protected $beUser = null;
 
     /**
-     * @var FrontendUser|null
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser|null
      */
     protected $feUser = null;
 
