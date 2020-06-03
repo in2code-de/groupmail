@@ -12,25 +12,35 @@
 - optional $senderEmail [string]: the sender email. If not defined the fallback `$GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress']` is used
 - optional $senderName [string]: the sender name. If not defined the fallback `$GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName']` is used
 - optional $mailFormat [string]: default `FluidEmail::FORMAT_BOTH` valid options are `FluidEmail::FORMAT_BOTH`,  `FluidEmail::FORMAT_HTML` or `FluidEmail::FORMAT_PLAIN`
-- optional $attachments [array]: not implemented jet
+- optional $context [string]: default `Context::FRONTEND` valid options are `Context::FRONTEND`,  `Context::BACKEND`
+- optional $workflowState [int]: default `Workflow::STATE_DRAFT` valid options are `Workflow::STATE_DRAFT`, `Workflow::STATE_REVIEW`, `Workflow::STATE_APPROVED`, `Workflow::STATE_REJECTED`
+- optional $attachments [array]: an array with SysFile Objects
 
 #### How to use the mailService
 
 ```php
-        $beGroupRepository = GeneralUtility::makeInstance(BackendUserGroupRepository::class);
+        $beGroupRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Domain\Repository\BackendUserGroupRepository::class);
         $beGroups = [
             $beGroupRepository->findByUid(2),
             $beGroupRepository->findByUid(4)
         ];
+        
+        $fileRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
+        $attachments = [
+            $fileRepository->findByUid(2)
+        ];
 
-        $mailService = GeneralUtility::makeInstance(MailService::class);
+        $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\In2code\In2bemail\Service\MailService::class);
         $mailService->generateMailing(
             $beGroups,
             'Betreff',
             'Inhalt',
             'sender@in2code.de',
             'Sender Name',
-            FluidEmail::FORMAT_PLAIN
+            \TYPO3\CMS\Core\Mail\FluidEmail::FORMAT_PLAIN,
+            \In2code\In2bemail\Context\Context::BACKEND,
+            \In2code\In2bemail\Workflow\Workflow::STATE_DRAFT,
+            $attachments
         );
 ```
 
@@ -66,7 +76,7 @@ This extension can be configured in the "Extension Configuration" (Backend Modul
 
 ### Workflow
 
-- draft / no mail queue entries will be generated
-- review / no mail queue entries will be generated
-- rejected / no mail queue entries will be generated
-- approved / mail queue entries will be generated
+- DRAFT: mailings with this status will be ignored if mail queue entries will be generated
+- REVIEW: mailings with this status will be ignored if mail queue entries will be generated
+- REJECTED: mailings with this status will be moved into locked mailings and no mail queue entries will be generated
+- APPROVED: queue entries will be generated on the next execution of the generateMailQueue command
