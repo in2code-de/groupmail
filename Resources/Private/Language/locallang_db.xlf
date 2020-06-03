@@ -40,6 +40,9 @@
             <trans-unit id="tx_in2bemail_domain_model_mailing.sender_name">
                 <source>Name</source>
             </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.attachments">
+                <source>Attachments</source>
+            </trans-unit>
             <trans-unit id="tx_in2bemail_domain_model_mailing.mail_queue_generated">
                 <source>Mail Queue generated</source>
             </trans-unit>

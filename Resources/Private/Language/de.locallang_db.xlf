@@ -52,6 +52,11 @@
                 <source>Name</source>
                 <target>Name</target>
             </trans-unit>
+            <trans-unit id="tx_in2bemail_domain_model_mailing.attachments">
+                <source>Attachments</source>
+                <target>Anhänge</target>
+            </trans-unit>
+
             <trans-unit id="tx_in2bemail_domain_model_mailing.mail_queue_generated">
                 <source>Mail Queue generated</source>
                 <target>Mail Warteschlange erstellt</target>
@@ -328,7 +333,7 @@
             </trans-unit>
             <trans-unit id="create-mailing.sender-mail">
                 <source>Sender Email</source>
-                <target>Absender Email</target>
+                <target>Absender Mail</target>
             </trans-unit>
             <trans-unit id="create-mailing.subject">
                 <source>Subject</source>
@@ -336,7 +341,7 @@
             </trans-unit>
             <trans-unit id="create-mailing.bodytext">
                 <source>Bodytext</source>
-                <target>Email Inhalt</target>
+                <target>E-Mail Inhalt</target>
             </trans-unit>
             <trans-unit id="create-mailing.attachments">
                 <source>Attachments</source>
