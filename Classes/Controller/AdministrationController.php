@@ -91,13 +91,14 @@ class AdministrationController extends ActionController
         $defaultQuerySettings = $this->objectManager->get(Typo3QuerySettings::class);
         $defaultQuerySettings->setRespectStoragePage(false);
         $this->frontendUserGroupRepository->setDefaultQuerySettings($defaultQuerySettings);
-
+        
         $this->view->assignMultiple(
             [
                 'beGroups' => $this->backendUserGroupRepository->findAll(),
                 'feGroups' => $this->frontendUserGroupRepository->findAll(),
                 'mailing' => new Mailing(),
-                'senderData' => $this->getSenderData()
+                'senderData' => $this->getSenderData(),
+                'backendLanguage' => $GLOBALS['BE_USER']->uc['lang']
             ]
         );
     }
