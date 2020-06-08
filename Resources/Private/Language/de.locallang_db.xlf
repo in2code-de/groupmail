@@ -333,7 +333,7 @@
             </trans-unit>
             <trans-unit id="create-mailing.sender-mail">
                 <source>Sender Email</source>
-                <target>Absender Mail</target>
+                <target>Absender E-Mail</target>
             </trans-unit>
             <trans-unit id="create-mailing.subject">
                 <source>Subject</source>
